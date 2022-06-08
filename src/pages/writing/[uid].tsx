@@ -2,9 +2,13 @@ import * as prismicH from '@prismicio/helpers';
 import { GetServerSideProps } from 'next';
 import { Box, Text } from '../../../stitches.config';
 import { createClient } from '../../services/prismic';
+import { IPost } from '../../types/posts';
 
-const Post = ({ post }: any) => {
-  console.log(post);
+interface PostProps {
+  post: IPost;
+}
+
+const Post = ({ post }: PostProps) => {
   return (
     <Box limit="md">
       <Text type="title">Hello world</Text>
@@ -25,11 +29,11 @@ export const getServerSideProps: GetServerSideProps = async ({
   );
 
   const post = {
+    uid,
     title: prismicH.asText(data.title),
     subtitle: prismicH.asText(data.subtitle),
     content: prismicH.asHTML(data.content),
     publicationDate: first_publication_date,
-    id: uid,
   };
 
   return {

@@ -1,10 +1,10 @@
 import * as prismicH from '@prismicio/helpers';
-import { PrismicRichText } from '@prismicio/react';
 import Link from 'next/link';
 import { Box, styled, Text } from '../../../stitches.config';
+import { IPost } from '../../types/posts';
 
 interface WritingCardProps {
-  post: any;
+  post: IPost;
 }
 
 const HoverElement = styled('div', {
@@ -47,35 +47,20 @@ const Time = styled('time', {
 });
 
 export const WritingCard = ({ post }: WritingCardProps) => {
+  console.log(post);
   return (
     <Link href={`/writing/${post.uid}`}>
       <CardContainer>
-        <PrismicRichText
-          field={post.data.title}
-          components={{
-            heading1: ({ children }) => <Text type="title">{children}</Text>,
-          }}
-        />
-        <PrismicRichText
-          field={post.data.subtitle}
-          components={{
-            heading3: ({ children }) => (
-              <Text type="paragraph" css={{ color: '$baseGray' }}>
-                {children}
-              </Text>
-            ),
-          }}
-        />
-        <Time
-          dateTime={prismicH.asDate(post.first_publication_date)?.toISOString()}
-        >
-          {prismicH
-            .asDate(post.first_publication_date)
-            ?.toLocaleDateString('en-US', {
-              month: 'long',
-              day: '2-digit',
-              year: 'numeric',
-            })}
+        <Text type="title">{post.title}</Text>
+        <Text type="paragraph" css={{ color: '$baseGray' }}>
+          {post.subtitle}
+        </Text>
+        <Time dateTime={prismicH.asDate(post.publicationDate)?.toISOString()}>
+          {prismicH.asDate(post.publicationDate)?.toLocaleDateString('en-US', {
+            month: 'long',
+            day: '2-digit',
+            year: 'numeric',
+          })}
         </Time>
         <HoverElement />
       </CardContainer>
