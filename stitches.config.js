@@ -2,6 +2,8 @@ import { mauve, mauveDark } from '@radix-ui/colors';
 import { createStitches, globalCss } from '@stitches/react';
 import {
   primaryGradient,
+  primaryGradientA,
+  primaryRadialA,
   secondaryGradient,
   tertiaryGradient,
 } from './src/styles/colors';
@@ -52,8 +54,11 @@ export const { styled, css, createTheme, keyframes } = createStitches({
       darkerGray: mauveDark.mauve2,
 
       primaryGradient,
+      primaryGradientA,
       secondaryGradient,
       tertiaryGradient,
+
+      primaryRadialA,
     },
     fonts: {
       sans: 'Inter, sans-serif',
@@ -175,9 +180,15 @@ export const Text = styled('p', {
 export const Container = styled('div', {
   minWidth: '100vw',
   minHeight: '100vh',
-  background: '$secondary',
+  backgroundColor: '$secondary',
+  backgroundImage: '$primaryRadialA',
   transition: '$base',
 });
+
+// export const RadialGradientContainer = styled('div', {
+//   background: '$primaryRadialA',
+//   position: 'absolute',
+// });
 
 export const Icon = (iconElement, css) => {
   const Icon = styled(iconElement, {

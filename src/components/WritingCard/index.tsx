@@ -1,6 +1,7 @@
 import { Box, styled, Text } from '../../../stitches.config';
 
 const HoverElement = styled('div', {
+  opacity: 0,
   visibility: 'hidden',
   position: 'absolute',
   width: '100%',
@@ -9,10 +10,9 @@ const HoverElement = styled('div', {
   boxSizing: 'content-box',
   alignSelf: 'center',
   borderRadius: '$6',
-  background: '$primaryGradient',
+  background: '$primaryGradientA',
   transform: 'scaleX(0.95)',
-  transition: 'all 0.1s ease',
-  opacity: 0.08,
+  transition: 'all 0.2s ease',
 });
 
 const CardContainer = styled(Box, {
@@ -22,9 +22,10 @@ const CardContainer = styled(Box, {
   width: '100%',
   justifyContent: 'center',
   borderRadius: '$3',
-  transition: 'all 0.2s ease',
+  transition: '$base',
   '&:hover': {
     [`& ${HoverElement}`]: {
+      opacity: 1,
       transform: 'scaleX(1)',
       visibility: 'visible',
     },
