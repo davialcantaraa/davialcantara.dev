@@ -1,6 +1,7 @@
 import * as prismicH from '@prismicio/helpers';
 import Link from 'next/link';
 import { Box, styled, Text } from '../../../stitches.config';
+import { Time } from '../../styles/Time';
 import { IPost } from '../../types/posts';
 
 interface WritingCardProps {
@@ -40,10 +41,6 @@ const CardContainer = styled(Box, {
   [`& + ${Box}`]: {
     marginTop: '$11',
   },
-});
-
-const Time = styled('time', {
-  color: '$darkGray',
 });
 
 export const WritingCard = ({ post }: WritingCardProps) => {

@@ -17,7 +17,7 @@ const Writing = ({ posts }: WritingProps) => {
       css={{
         flexDirection: 'column',
         justifyContent: 'flex-start',
-        padding: '$11 $10',
+        padding: '$10',
         gap: '$13',
       }}
     >

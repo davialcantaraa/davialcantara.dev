@@ -173,6 +173,10 @@ export const Text = styled('p', {
         fontWeight: 500,
         fontSize: '$4',
       },
+      largeTitle: {
+        fontWeight: 500,
+        fontSize: '$5',
+      },
     },
   },
 });
