@@ -69,20 +69,20 @@ export const Header = () => {
             </Link>
           </Tooltip>
           <Divider />
-          <Tooltip content="Home">
-            <a href="https://twitter.com" target="_blank" rel="noreferrer">
-              <NavbarItem>
-                <CustomGithubIcon />
-              </NavbarItem>
-            </a>
-          </Tooltip>
-          <Tooltip content="Home">
-            <a href="https://twitter.com" target="_blank" rel="noreferrer">
-              <NavbarItem>
-                <CustomTwitterIcon />
-              </NavbarItem>
-            </a>
-          </Tooltip>
+          <NavbarItem
+            href="https://twitter.com"
+            target="_blank"
+            rel="noreferrer"
+          >
+            <CustomGithubIcon />
+          </NavbarItem>
+          <NavbarItem
+            href="https://twitter.com"
+            target="_blank"
+            rel="noreferrer"
+          >
+            <CustomTwitterIcon />
+          </NavbarItem>
         </NavbarGroup>
         <NavbarGroup>
           <Tooltip content="Switch theme">
@@ -99,7 +99,7 @@ export const Header = () => {
             </NavbarButton>
           </Tooltip>
           <Tooltip content="Connect wallet">
-            <NavbarItem>
+            <NavbarItem href="/writing">
               <CustomAvatarIcon />
             </NavbarItem>
           </Tooltip>
