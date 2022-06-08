@@ -35,38 +35,38 @@ export const Header = () => {
         </NavbarGroup>
         <NavbarGroup data-desktop-navbar>
           <Tooltip content="Home">
-            <Link href="/">
-              <NavbarItem className={asPath === '/' ? 'activeLink' : undefined}>
+            <NavbarItem className={asPath === '/' ? 'activeLink' : undefined}>
+              <Link href="/">
                 <CustomHomeIcon />
-              </NavbarItem>
-            </Link>
+              </Link>
+            </NavbarItem>
           </Tooltip>
           <Tooltip content="Writing">
-            <Link href="/writing">
-              <NavbarItem
-                className={asPath === '/writing' ? 'activeLink' : undefined}
-              >
+            <NavbarItem
+              className={asPath === '/writing' ? 'activeLink' : undefined}
+            >
+              <Link href="/writing">
                 <CustomLetterIcon />
-              </NavbarItem>
-            </Link>
+              </Link>
+            </NavbarItem>
           </Tooltip>
           <Tooltip content="Projects">
-            <Link href="/projects">
-              <NavbarItem
-                className={asPath === '/projects' ? 'activeLink' : undefined}
-              >
+            <NavbarItem
+              className={asPath === '/projects' ? 'activeLink' : undefined}
+            >
+              <Link href="/projects">
                 <CustomLightningIcon />
-              </NavbarItem>
-            </Link>
+              </Link>
+            </NavbarItem>
           </Tooltip>
           <Tooltip content="NFTs">
-            <Link href="/nfts">
-              <NavbarItem
-                className={asPath === '/nfts' ? 'activeLink' : undefined}
-              >
+            <NavbarItem
+              className={asPath === '/nfts' ? 'activeLink' : undefined}
+            >
+              <Link href="/nfts">
                 <CustomNFTIcon />
-              </NavbarItem>
-            </Link>
+              </Link>
+            </NavbarItem>
           </Tooltip>
           <Divider />
           <Tooltip content="Home">

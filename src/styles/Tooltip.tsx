@@ -51,8 +51,8 @@ export const Tooltip = ({
   return (
     <TooltipProvider delayDuration={20}>
       <TooltipElement>
-        <TooltipTrigger>{children}</TooltipTrigger>
-        <StyledContent sideOffset={5} id="asdasdasd">
+        <TooltipTrigger asChild>{children}</TooltipTrigger>
+        <StyledContent sideOffset={5}>
           <StyledArrow offset={7} />
           {content}
         </StyledContent>
