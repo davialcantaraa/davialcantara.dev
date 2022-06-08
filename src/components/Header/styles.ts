@@ -52,6 +52,7 @@ export const NavbarItem = styled(ToolbarPrimitive.Link, {
   alignItems: 'center',
   color: '$primary',
   transition: '$base',
+  cursor: 'pointer',
   '&:focus': {
     outline: 'none',
     boxShadow: `0 0 0 2px hsl(250, 43.0%, 48.0%)`,

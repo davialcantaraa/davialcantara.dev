@@ -35,49 +35,53 @@ export const Header = () => {
         </NavbarGroup>
         <NavbarGroup data-desktop-navbar>
           <Tooltip content="Home">
-            <NavbarItem className={asPath === '/' ? 'activeLink' : undefined}>
-              <Link href="/">
+            <Link href="/">
+              <NavbarItem className={asPath === '/' ? 'activeLink' : undefined}>
                 <CustomHomeIcon />
-              </Link>
-            </NavbarItem>
+              </NavbarItem>
+            </Link>
           </Tooltip>
           <Tooltip content="Writing">
-            <NavbarItem
-              className={asPath === '/writing' ? 'activeLink' : undefined}
-            >
-              <Link href="/writing">
+            <Link href="/writing">
+              <NavbarItem
+                className={asPath === '/writing' ? 'activeLink' : undefined}
+              >
                 <CustomLetterIcon />
-              </Link>
-            </NavbarItem>
+              </NavbarItem>
+            </Link>
           </Tooltip>
           <Tooltip content="Projects">
-            <NavbarItem
-              className={asPath === '/projects' ? 'activeLink' : undefined}
-            >
-              <Link href="/projects">
+            <Link href="/projects">
+              <NavbarItem
+                className={asPath === '/projects' ? 'activeLink' : undefined}
+              >
                 <CustomLightningIcon />
-              </Link>
-            </NavbarItem>
+              </NavbarItem>
+            </Link>
           </Tooltip>
           <Tooltip content="NFTs">
-            <NavbarItem
-              className={asPath === '/nfts' ? 'activeLink' : undefined}
-            >
-              <Link href="/nfts">
+            <Link href="/nfts">
+              <NavbarItem
+                className={asPath === '/nfts' ? 'activeLink' : undefined}
+              >
                 <CustomNFTIcon />
-              </Link>
-            </NavbarItem>
+              </NavbarItem>
+            </Link>
           </Tooltip>
           <Divider />
           <Tooltip content="Home">
-            <NavbarItem>
-              <CustomGithubIcon />
-            </NavbarItem>
+            <a href="https://twitter.com" target="_blank" rel="noreferrer">
+              <NavbarItem>
+                <CustomGithubIcon />
+              </NavbarItem>
+            </a>
           </Tooltip>
           <Tooltip content="Home">
-            <NavbarItem>
-              <CustomTwitterIcon />
-            </NavbarItem>
+            <a href="https://twitter.com" target="_blank" rel="noreferrer">
+              <NavbarItem>
+                <CustomTwitterIcon />
+              </NavbarItem>
+            </a>
           </Tooltip>
         </NavbarGroup>
         <NavbarGroup>
