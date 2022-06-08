@@ -1,106 +1,101 @@
-import {
-  AvatarIcon,
-  HomeIcon,
-  LetterCaseCapitalizeIcon,
-  LightningBoltIcon,
-  MoonIcon,
-  SunIcon,
-} from '@radix-ui/react-icons';
-import * as ToolbarPrimitive from '@radix-ui/react-toolbar';
-import { Box, Icon, styled } from '../../../stitches.config.js';
-import { useTheme } from '../../providers/themeProvider';
+import { useTheme } from 'next-themes';
+import Link from 'next/link';
+import { useRouter } from 'next/router';
+import { Box } from '../../../stitches.config';
 import { Tooltip } from '../../styles/Tooltip';
-
-const Navbar = styled(ToolbarPrimitive.Root, {
-  display: 'flex',
-  width: '100%',
-  justifyContent: 'space-between',
-});
-
-const NavbarGroup = styled(ToolbarPrimitive.ToggleGroup, {
-  display: 'flex',
-  gap: '$2',
-});
-
-const NavbarItem = styled(ToolbarPrimitive.ToggleItem, {
-  padding: '$2',
-  borderRadius: '$2',
-  display: 'flex',
-  justifyContent: 'center',
-  alignItems: 'center',
-  color: '$primary',
-  transition: '0.2s ease',
-  '&:focus': {
-    outline: 'none',
-    boxShadow: `0 0 0 2px hsl(250, 43.0%, 48.0%)`,
-  },
-  '&:hover': {
-    background: '$primaryGradient',
-  },
-  '&:active': {
-    transform: 'scale(0.85)',
-  },
-});
-
-const NavbarButton = styled(ToolbarPrimitive.Button, NavbarItem, {});
-
-const CustomHomeIcon = Icon(HomeIcon, {
-  width: '$3-middle',
-  height: '$3-middle',
-});
-const CustomLightningIcon = Icon(LightningBoltIcon, {
-  width: '$3-middle',
-  height: '$3-middle',
-});
-const CustomLetterIcon = Icon(LetterCaseCapitalizeIcon, {
-  width: '$3-middle',
-  height: '$3-middle',
-});
-const CustomMoonIcon = Icon(MoonIcon, {
-  width: '$3-middle',
-  height: '$3-middle',
-});
-const CustomSunIcon = Icon(SunIcon, {
-  width: '$3-middle',
-  height: '$3-middle',
-});
-const CustomAvatarIcon = Icon(AvatarIcon, {
-  width: '$3-middle',
-  height: '$3-middle',
-});
+import { MobileMenu } from '../MobileMenu/index';
+import {
+  CustomAvatarIcon,
+  CustomGithubIcon,
+  CustomHomeIcon,
+  CustomLetterIcon,
+  CustomLightningIcon,
+  CustomMobileMenuIcon,
+  CustomMoonIcon,
+  CustomNFTIcon,
+  CustomSunIcon,
+  CustomTwitterIcon,
+  Divider,
+  Navbar,
+  NavbarButton,
+  NavbarGroup,
+  NavbarItem,
+} from './styles';
 
 export const Header = () => {
-  const { isDarkTheme, setIsDarkTheme } = useTheme();
+  const { setTheme, theme } = useTheme();
+  const { asPath } = useRouter();
   return (
-    <Box limit="md">
+    <Box css={{ padding: '$9 $10' }}>
       <Navbar>
-        <NavbarGroup type="multiple">
+        <NavbarGroup data-mobile-menu>
+          <MobileMenu>
+            <CustomMobileMenuIcon />
+          </MobileMenu>
+        </NavbarGroup>
+        <NavbarGroup data-desktop-navbar>
           <Tooltip content="Home">
-            <NavbarItem value="aaa">
-              <CustomHomeIcon />
-            </NavbarItem>
+            <Link href="/">
+              <NavbarItem className={asPath === '/' ? 'activeLink' : undefined}>
+                <CustomHomeIcon />
+              </NavbarItem>
+            </Link>
           </Tooltip>
           <Tooltip content="Writing">
-            <NavbarItem value="aaa">
-              <CustomLetterIcon />
-            </NavbarItem>
+            <Link href="/writing">
+              <NavbarItem
+                className={asPath === '/writing' ? 'activeLink' : undefined}
+              >
+                <CustomLetterIcon />
+              </NavbarItem>
+            </Link>
           </Tooltip>
           <Tooltip content="Projects">
-            <NavbarItem value="aaa">
-              <CustomLightningIcon />
+            <Link href="/projects">
+              <NavbarItem
+                className={asPath === '/projects' ? 'activeLink' : undefined}
+              >
+                <CustomLightningIcon />
+              </NavbarItem>
+            </Link>
+          </Tooltip>
+          <Tooltip content="NFTs">
+            <Link href="/nfts">
+              <NavbarItem
+                className={asPath === '/nfts' ? 'activeLink' : undefined}
+              >
+                <CustomNFTIcon />
+              </NavbarItem>
+            </Link>
+          </Tooltip>
+          <Divider />
+          <Tooltip content="Home">
+            <NavbarItem>
+              <CustomGithubIcon />
+            </NavbarItem>
+          </Tooltip>
+          <Tooltip content="Home">
+            <NavbarItem>
+              <CustomTwitterIcon />
             </NavbarItem>
           </Tooltip>
         </NavbarGroup>
-        <NavbarGroup type="multiple">
+        <NavbarGroup>
           <Tooltip content="Switch theme">
             <NavbarButton
-              onClick={() => setIsDarkTheme(prevState => !prevState)}
+              onClick={() => setTheme(theme === 'light' ? 'dark' : 'light')}
+              css={{
+                display: 'none',
+                '@bp2': {
+                  display: 'flex',
+                },
+              }}
             >
-              {isDarkTheme ? <CustomMoonIcon /> : <CustomSunIcon />}
+              {theme === 'light' ? <CustomMoonIcon /> : <CustomSunIcon />}
             </NavbarButton>
           </Tooltip>
           <Tooltip content="Connect wallet">
-            <NavbarItem value="aaa">
+            <NavbarItem>
               <CustomAvatarIcon />
             </NavbarItem>
           </Tooltip>
