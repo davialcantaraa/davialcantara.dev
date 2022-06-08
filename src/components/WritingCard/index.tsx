@@ -1,4 +1,11 @@
+import * as prismicH from '@prismicio/helpers';
+import { PrismicRichText } from '@prismicio/react';
+import Link from 'next/link';
 import { Box, styled, Text } from '../../../stitches.config';
+
+interface WritingCardProps {
+  post: any;
+}
 
 const HoverElement = styled('div', {
   opacity: 0,
@@ -39,17 +46,39 @@ const Time = styled('time', {
   color: '$darkGray',
 });
 
-export const WritingCard = () => {
+export const WritingCard = ({ post }: WritingCardProps) => {
   return (
-    <>
+    <Link href={`/writing/${post.uid}`}>
       <CardContainer>
-        <Text type="title">"Connect Wallet" button, but better 🌈 🧰</Text>
-        <Text type="paragraph" css={{ color: '$baseGray' }}>
-          The best way to connect a wallet
-        </Text>
-        <Time>May 12, 2022</Time>
+        <PrismicRichText
+          field={post.data.title}
+          components={{
+            heading1: ({ children }) => <Text type="title">{children}</Text>,
+          }}
+        />
+        <PrismicRichText
+          field={post.data.subtitle}
+          components={{
+            heading3: ({ children }) => (
+              <Text type="paragraph" css={{ color: '$baseGray' }}>
+                {children}
+              </Text>
+            ),
+          }}
+        />
+        <Time
+          dateTime={prismicH.asDate(post.first_publication_date)?.toISOString()}
+        >
+          {prismicH
+            .asDate(post.first_publication_date)
+            ?.toLocaleDateString('en-US', {
+              month: 'long',
+              day: '2-digit',
+              year: 'numeric',
+            })}
+        </Time>
         <HoverElement />
       </CardContainer>
-    </>
+    </Link>
   );
 };
