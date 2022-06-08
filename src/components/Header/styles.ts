@@ -1,11 +1,12 @@
+import { violetA } from '@radix-ui/colors';
 import {
   AvatarIcon,
   GitHubLogoIcon,
   HamburgerMenuIcon,
   HomeIcon,
-  LetterCaseCapitalizeIcon,
   LightningBoltIcon,
   MoonIcon,
+  Pencil1Icon,
   SunIcon,
   TokensIcon,
   TwitterLogoIcon,
@@ -55,55 +56,55 @@ export const NavbarItem = styled(ToolbarPrimitive.Link, {
   cursor: 'pointer',
   '&:focus': {
     outline: 'none',
-    boxShadow: `0 0 0 2px hsl(250, 43.0%, 48.0%)`,
+    boxShadow: `0 0 0 1px ${violetA.violetA11}`,
   },
   '&:hover': {
-    background: '$primaryGradient',
+    background: '$secondaryGradient',
   },
   '&:active': {
     transform: 'scale(0.85)',
   },
   '&.activeLink': {
-    background: '$secondaryGradient',
-    boxShadow: `0 0 0 2px hsla(250, 43.0%, 48.0%, 0.4)`,
+    background: '$primaryGradient',
+    boxShadow: `0 0 0 1px ${violetA.violetA11}`,
   },
 });
 
 export const NavbarButton = styled(ToolbarPrimitive.Button, NavbarItem);
 
 export const CustomHomeIcon = Icon(HomeIcon, {
-  size: '$7',
+  size: '$6',
 });
 export const CustomLightningIcon = Icon(LightningBoltIcon, {
-  size: '$7',
+  size: '$6',
 });
-export const CustomLetterIcon = Icon(LetterCaseCapitalizeIcon, {
-  size: '$7',
+export const CustomLetterIcon = Icon(Pencil1Icon, {
+  size: '$6',
 });
 export const CustomMoonIcon = Icon(MoonIcon, {
-  size: '$7',
+  size: '$6',
 });
 export const CustomSunIcon = Icon(SunIcon, {
-  size: '$7',
+  size: '$6',
 });
 export const CustomAvatarIcon = Icon(AvatarIcon, {
-  size: '$7',
+  size: '$6',
 });
 
 export const CustomGithubIcon = Icon(GitHubLogoIcon, {
-  size: '$6',
+  size: '$5',
 });
 
 export const CustomTwitterIcon = Icon(TwitterLogoIcon, {
-  size: '$6',
+  size: '$5',
 });
 
 export const CustomNFTIcon = Icon(TokensIcon, {
-  size: '$7',
+  size: '$6',
 });
 
 export const CustomMobileMenuIcon = Icon(HamburgerMenuIcon, {
-  size: '$7',
+  size: '$6',
   color: '$primary',
   margin: '$2 0',
 });
