@@ -7,5 +7,31 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
   const { data } = await polygonApi.get(
     `/${apiKey}/getNFTs?owner=${ownerAddr}`,
   );
-  res.status(200).json(data);
+
+  const { ownedNfts } = data;
+
+  const collections = ownedNfts.map((nft: any) => ({
+    name: nft.title.split(' #')[0],
+  }));
+
+  const nfts = collections.map((collection: any) => ({
+    collectionName: collection.name.includes('#') ? '-' : collection.name,
+    openseaUrl: `https://opensea.io/collection/${collection.name
+      .replace(' ', '-')
+      .toLowerCase()}`,
+    nfts: ownedNfts
+      .filter((nft: any) => nft.title.split(' #')[0] === collection.name)
+      .map((nft: any) => ({
+        title: nft.title,
+        description: nft.description,
+        contract: nft.contract.address,
+        image: nft.media.gateway,
+        id: nft.metadata.dna,
+        openseaUrl: `https://opensea.io/assets/matic/${nft.contract.address}/${
+          nft.title.split(' #')[1]
+        }`,
+      })),
+  }));
+
+  res.status(200).json(nfts);
 };
