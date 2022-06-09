@@ -5,7 +5,7 @@ import sm from '../../sm.json';
 export const endpoint = sm.apiEndpoint;
 export const repositoryName = prismic.getRepositoryName(endpoint);
 
-export function linkResolver(doc) {
+export function linkResolver(doc: any) {
   switch (doc.type) {
     case 'homepage':
       return '/';
