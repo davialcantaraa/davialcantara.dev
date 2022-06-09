@@ -31,79 +31,77 @@ export const MobileMenu = ({ children }: any) => {
   const { asPath } = useRouter();
   const { theme, setTheme } = useTheme();
   return (
-    <nav>
-      <MobileMenuContainer>
-        <MobileMenuTrigger>{children}</MobileMenuTrigger>
-        <MobileMenuPortal>
-          <MobileMenuOverlay />
-          <MobileMenuContent>
-            <MobileMenuClose aria-label="Close">
-              <CustomCloseIcon />
-            </MobileMenuClose>
-            <MobileMenuNavbar orientation="vertical">
-              <MobileMenuTitle>Davi Alcântara</MobileMenuTitle>
-              <Link href="/">
-                <MobileMenuNavbarItem
-                  className={asPath === '/' ? 'activeLink' : undefined}
-                >
-                  <CustomHomeIcon />
-                  Homepage
-                </MobileMenuNavbarItem>
-              </Link>
-              <Link href="/writing">
-                <MobileMenuNavbarItem
-                  className={asPath === '/writing' ? 'activeLink' : undefined}
-                >
-                  <CustomLetterIcon />
-                  Writing
-                </MobileMenuNavbarItem>
-              </Link>
-              <Link href="/projects">
-                <MobileMenuNavbarItem
-                  className={asPath === '/projects' ? 'activeLink' : undefined}
-                >
-                  <CustomLightningIcon />
-                  Projects
-                </MobileMenuNavbarItem>
-              </Link>
-              <Link href="/nfts">
-                <MobileMenuNavbarItem
-                  className={asPath === '/nfts' ? 'activeLink' : undefined}
-                >
-                  <CustomNFTIcon />
-                  NFTs
-                </MobileMenuNavbarItem>
-              </Link>
-              <MobileMenuDivider />
-              <MobileMenuTitle>Social</MobileMenuTitle>
-              <MobileMenuNavbarItem href="/" target="_blank" rel="noferrer">
-                <CustomGithubIcon />
-                Github
-              </MobileMenuNavbarItem>
-              <MobileMenuNavbarItem href="/" target="_blank" rel="noferrer">
-                <CustomTwitterIcon />
-                Twitter
-              </MobileMenuNavbarItem>
-              <MobileMenuDivider />
-              <MobileMenuNavbarButton
-                onClick={() => setTheme(theme === 'light' ? 'dark' : 'light')}
+    <MobileMenuContainer>
+      <MobileMenuTrigger>{children}</MobileMenuTrigger>
+      <MobileMenuPortal>
+        <MobileMenuOverlay />
+        <MobileMenuContent>
+          <MobileMenuClose aria-label="Close">
+            <CustomCloseIcon />
+          </MobileMenuClose>
+          <MobileMenuNavbar orientation="vertical">
+            <MobileMenuTitle>Davi Alcântara</MobileMenuTitle>
+            <Link href="/">
+              <MobileMenuNavbarItem
+                className={asPath === '/' ? 'activeLink' : undefined}
               >
-                {theme === 'light' ? (
-                  <>
-                    <CustomMoonIcon />
-                    Light theme
-                  </>
-                ) : (
-                  <>
-                    <CustomSunIcon />
-                    Dark theme
-                  </>
-                )}
-              </MobileMenuNavbarButton>
-            </MobileMenuNavbar>
-          </MobileMenuContent>
-        </MobileMenuPortal>
-      </MobileMenuContainer>
-    </nav>
+                <CustomHomeIcon />
+                Homepage
+              </MobileMenuNavbarItem>
+            </Link>
+            <Link href="/writing">
+              <MobileMenuNavbarItem
+                className={asPath === '/writing' ? 'activeLink' : undefined}
+              >
+                <CustomLetterIcon />
+                Writing
+              </MobileMenuNavbarItem>
+            </Link>
+            <Link href="/projects">
+              <MobileMenuNavbarItem
+                className={asPath === '/projects' ? 'activeLink' : undefined}
+              >
+                <CustomLightningIcon />
+                Projects
+              </MobileMenuNavbarItem>
+            </Link>
+            <Link href="/nfts">
+              <MobileMenuNavbarItem
+                className={asPath === '/nfts' ? 'activeLink' : undefined}
+              >
+                <CustomNFTIcon />
+                NFTs
+              </MobileMenuNavbarItem>
+            </Link>
+            <MobileMenuDivider />
+            <MobileMenuTitle>Social</MobileMenuTitle>
+            <MobileMenuNavbarItem href="/" target="_blank">
+              <CustomGithubIcon />
+              Github
+            </MobileMenuNavbarItem>
+            <MobileMenuNavbarItem href="/" target="_blank">
+              <CustomTwitterIcon />
+              Twitter
+            </MobileMenuNavbarItem>
+            <MobileMenuDivider />
+            <MobileMenuNavbarButton
+              onClick={() => setTheme(theme === 'light' ? 'dark' : 'light')}
+            >
+              {theme === 'light' ? (
+                <>
+                  <CustomMoonIcon />
+                  Light theme
+                </>
+              ) : (
+                <>
+                  <CustomSunIcon />
+                  Dark theme
+                </>
+              )}
+            </MobileMenuNavbarButton>
+          </MobileMenuNavbar>
+        </MobileMenuContent>
+      </MobileMenuPortal>
+    </MobileMenuContainer>
   );
 };

@@ -3,7 +3,8 @@ import * as DialogPrimitive from '@radix-ui/react-dialog';
 import { Cross2Icon } from '@radix-ui/react-icons';
 import * as ToolbarPrimitive from '@radix-ui/react-toolbar';
 import { CSS } from '@stitches/react';
-import { Icon, keyframes, styled } from '../../../stitches.config';
+import { keyframes, styled } from '../../../stitches.config';
+import { Icon } from '../../styles/primitives/Icon';
 
 export const MobileMenuNavbarItem = styled(ToolbarPrimitive.Link, {
   width: '100%',
@@ -50,6 +51,7 @@ export const MobileMenuContent = styled(DialogPrimitive.Content, {
   width: '50%',
   height: '100vh',
   padding: 15,
+  zIndex: 3,
   '@media (prefers-reduced-motion: no-preference)': {
     animation: `${MobileContentShow} 0.3s ease forwards`,
   },
