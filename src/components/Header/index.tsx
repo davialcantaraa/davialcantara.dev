@@ -1,8 +1,8 @@
 import { useTheme } from 'next-themes';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
-import { Box } from '../../../stitches.config';
-import { Tooltip } from '../../styles/Tooltip';
+import { Box } from '../../styles/primitives/Box';
+import { Tooltip } from '../../styles/primitives/Tooltip';
 import { MobileMenu } from '../MobileMenu/index';
 import {
   CustomAvatarIcon,
@@ -26,7 +26,7 @@ export const Header = () => {
   const { setTheme, theme } = useTheme();
   const { asPath } = useRouter();
   return (
-    <Box css={{ padding: '$9 $10' }}>
+    <Box css={{ padding: '$9 $10' }} limit="md">
       <Navbar>
         <NavbarGroup data-mobile-menu>
           <MobileMenu>
@@ -69,18 +69,10 @@ export const Header = () => {
             </Link>
           </Tooltip>
           <Divider />
-          <NavbarItem
-            href="https://twitter.com"
-            target="_blank"
-            rel="noreferrer"
-          >
+          <NavbarItem href="https://twitter.com" target="_blank">
             <CustomGithubIcon />
           </NavbarItem>
-          <NavbarItem
-            href="https://twitter.com"
-            target="_blank"
-            rel="noreferrer"
-          >
+          <NavbarItem href="https://twitter.com" target="_blank">
             <CustomTwitterIcon />
           </NavbarItem>
         </NavbarGroup>

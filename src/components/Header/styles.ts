@@ -1,6 +1,6 @@
 import { violetA } from '@radix-ui/colors';
 import {
-  AvatarIcon,
+  BackpackIcon,
   GitHubLogoIcon,
   HamburgerMenuIcon,
   HomeIcon,
@@ -12,7 +12,8 @@ import {
   TwitterLogoIcon,
 } from '@radix-ui/react-icons';
 import * as ToolbarPrimitive from '@radix-ui/react-toolbar';
-import { Icon, styled } from '../../../stitches.config';
+import { styled } from '../../../stitches.config';
+import { Icon } from '../../styles/primitives/Icon';
 
 export const Navbar = styled(ToolbarPrimitive.Root, {
   display: 'flex',
@@ -87,7 +88,7 @@ export const CustomMoonIcon = Icon(MoonIcon, {
 export const CustomSunIcon = Icon(SunIcon, {
   size: '$6',
 });
-export const CustomAvatarIcon = Icon(AvatarIcon, {
+export const CustomAvatarIcon = Icon(BackpackIcon, {
   size: '$6',
 });
 
