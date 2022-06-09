@@ -1,9 +1,11 @@
 import * as PrismicH from '@prismicio/helpers';
 import { GetStaticProps } from 'next';
-import { Box, Text } from '../../../stitches.config';
+import { Nothing } from '../../components/Nothing';
 import { WritingCard } from '../../components/WritingCard';
 import { createClient } from '../../services/prismic';
-import { VerticalBox } from '../../styles/VerticalBox';
+import { Box } from '../../styles/primitives/Box';
+import { Text } from '../../styles/primitives/Text';
+import { VerticalBox } from '../../styles/primitives/VerticalBox';
 import { IPost } from '../../types/posts';
 
 interface WritingProps {
@@ -26,9 +28,15 @@ const Writing = ({ posts }: WritingProps) => {
         <Text type="paragraph">Just my dev log</Text>
       </VerticalBox>
       <VerticalBox as="section">
-        {posts.map(post => (
-          <WritingCard key={post.uid} post={post} />
-        ))}
+        {posts.length ? (
+          <>
+            {posts.map((post: any) => (
+              <WritingCard key={post.uid} post={post} />
+            ))}
+          </>
+        ) : (
+          <Nothing />
+        )}
       </VerticalBox>
     </Box>
   );

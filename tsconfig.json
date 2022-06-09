@@ -19,7 +19,7 @@
     "next-env.d.ts",
     "**/*.ts",
     "**/*.tsx",
-    "src/services/prismic.js"
+    "src/services/prismic.ts"
   ],
   "exclude": ["node_modules"]
 }

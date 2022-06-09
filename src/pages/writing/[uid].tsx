@@ -1,10 +1,11 @@
 import * as prismicH from '@prismicio/helpers';
 import { PrismicRichText } from '@prismicio/react';
 import { GetServerSideProps } from 'next';
-import { Box, Text } from '../../../stitches.config';
 import { createClient } from '../../services/prismic';
-import { Time } from '../../styles/Time';
-import { VerticalBox } from '../../styles/VerticalBox';
+import { Box } from '../../styles/primitives/Box';
+import { Text } from '../../styles/primitives/Text';
+import { Time } from '../../styles/primitives/Time';
+import { VerticalBox } from '../../styles/primitives/VerticalBox';
 import { IPost } from '../../types/posts';
 
 interface PostProps {
@@ -12,7 +13,6 @@ interface PostProps {
 }
 
 const Post = ({ post }: PostProps) => {
-  console.log(post);
   return (
     <Box
       limit="md"
@@ -61,9 +61,6 @@ export const getServerSideProps: GetServerSideProps = async ({
     'writing',
     params.uid,
   );
-
-  console.log(data);
-  console.log(uid);
 
   const post = {
     uid,

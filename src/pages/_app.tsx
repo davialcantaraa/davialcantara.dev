@@ -4,9 +4,10 @@ import { ThemeProvider } from 'next-themes';
 import { AppProps } from 'next/app';
 import Link from 'next/link';
 import React from 'react';
-import { Container, globalStyles, lightTheme } from '../../stitches.config';
+import { globalStyles, lightTheme } from '../../stitches.config';
 import { Header } from '../components/Header';
 import { linkResolver, repositoryName } from '../services/prismic';
+import { Container } from '../styles/primitives/Container';
 
 globalStyles();
 
