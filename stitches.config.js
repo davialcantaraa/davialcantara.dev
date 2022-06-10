@@ -62,6 +62,7 @@ export const { styled, css, createTheme, keyframes } = createStitches({
     },
     fonts: {
       sans: 'Inter, sans-serif',
+      mono: 'Fira Code, monospace',
     },
     fontSizes: {
       1: '12px',

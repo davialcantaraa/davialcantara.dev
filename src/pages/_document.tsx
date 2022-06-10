@@ -15,6 +15,10 @@ export default function Document() {
           rel="stylesheet"
         />
         <link rel="shortcut icon" href="/favicon.png" type="image/png" />
+        <link
+          href="https://fonts.googleapis.com/css2?family=Fira+Code&display=swap"
+          rel="stylesheet"
+        />
       </Head>
       <body>
         <Main />
