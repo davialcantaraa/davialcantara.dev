@@ -7,7 +7,6 @@ import {
 import * as ToolbarPrimitive from '@radix-ui/react-toolbar';
 import { styled } from '../../../stitches.config';
 import { Box } from '../../styles/primitives/Box';
-import { Icon } from '../../styles/primitives/Icon';
 
 export const Toolbar = styled(ToolbarPrimitive.Root, {
   display: 'flex',
@@ -33,15 +32,15 @@ export const ToolbarDivider = styled('div', {
   margin: '0 $6',
 });
 
-export const CustomStartIcon = Icon(StarIcon, {
+export const CustomStartIcon = styled(StarIcon, {
   size: '$6',
 });
-export const CustomCommitIcon = Icon(CommitIcon, {
+export const CustomCommitIcon = styled(CommitIcon, {
   size: '$6',
 });
-export const CustomExternalLinkIcon = Icon(ExternalLinkIcon, {
+export const CustomExternalLinkIcon = styled(ExternalLinkIcon, {
   size: '$6',
 });
-export const CustomGitHubLogoIcon = Icon(GitHubLogoIcon, {
+export const CustomGitHubLogoIcon = styled(GitHubLogoIcon, {
   size: '$6',
 });

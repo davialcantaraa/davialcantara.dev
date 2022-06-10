@@ -4,7 +4,6 @@ import { Cross2Icon } from '@radix-ui/react-icons';
 import * as ToolbarPrimitive from '@radix-ui/react-toolbar';
 import { CSS } from '@stitches/react';
 import { keyframes, styled } from '../../../stitches.config';
-import { Icon } from '../../styles/primitives/Icon';
 
 export const MobileMenuNavbarItem = styled(ToolbarPrimitive.Link, {
   width: '100%',
@@ -80,7 +79,7 @@ export const MobileMenuClose = styled(DialogPrimitive.Close, {
   justifyContent: 'flex-end',
 });
 
-export const CustomCloseIcon = Icon(Cross2Icon, {
+export const CustomCloseIcon = styled(Cross2Icon, {
   color: '$primary',
   size: '$7',
 } as CSS);

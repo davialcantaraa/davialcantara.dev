@@ -13,7 +13,6 @@ import {
 } from '@radix-ui/react-icons';
 import * as ToolbarPrimitive from '@radix-ui/react-toolbar';
 import { styled } from '../../../stitches.config';
-import { Icon } from '../../styles/primitives/Icon';
 
 export const Navbar = styled(ToolbarPrimitive.Root, {
   display: 'flex',
@@ -73,38 +72,38 @@ export const NavbarItem = styled(ToolbarPrimitive.Link, {
 
 export const NavbarButton = styled(ToolbarPrimitive.Button, NavbarItem);
 
-export const CustomHomeIcon = Icon(HomeIcon, {
+export const CustomHomeIcon = styled(HomeIcon, {
   size: '$6',
 });
-export const CustomLightningIcon = Icon(LightningBoltIcon, {
+export const CustomLightningIcon = styled(LightningBoltIcon, {
   size: '$6',
 });
-export const CustomLetterIcon = Icon(Pencil1Icon, {
+export const CustomLetterIcon = styled(Pencil1Icon, {
   size: '$6',
 });
-export const CustomMoonIcon = Icon(MoonIcon, {
+export const CustomMoonIcon = styled(MoonIcon, {
   size: '$6',
 });
-export const CustomSunIcon = Icon(SunIcon, {
+export const CustomSunIcon = styled(SunIcon, {
   size: '$6',
 });
-export const CustomAvatarIcon = Icon(BackpackIcon, {
+export const CustomAvatarIcon = styled(BackpackIcon, {
   size: '$6',
 });
 
-export const CustomGithubIcon = Icon(GitHubLogoIcon, {
+export const CustomGithubIcon = styled(GitHubLogoIcon, {
   size: '$5',
 });
 
-export const CustomTwitterIcon = Icon(TwitterLogoIcon, {
+export const CustomTwitterIcon = styled(TwitterLogoIcon, {
   size: '$5',
 });
 
-export const CustomNFTIcon = Icon(TokensIcon, {
+export const CustomNFTIcon = styled(TokensIcon, {
   size: '$6',
 });
 
-export const CustomMobileMenuIcon = Icon(HamburgerMenuIcon, {
+export const CustomMobileMenuIcon = styled(HamburgerMenuIcon, {
   size: '$6',
   color: '$primary',
   margin: '$2 0',

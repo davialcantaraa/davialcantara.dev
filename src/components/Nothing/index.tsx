@@ -1,9 +1,9 @@
 import { InfoCircledIcon } from '@radix-ui/react-icons';
+import { styled } from '../../../stitches.config';
 import { Box } from '../../styles/primitives/Box';
-import { Icon } from '../../styles/primitives/Icon';
 import { Text } from '../../styles/primitives/Text';
 
-const CustomInfoIcon = Icon(InfoCircledIcon, {
+const CustomInfoIcon = styled(InfoCircledIcon, {
   size: '$10',
 });
 
