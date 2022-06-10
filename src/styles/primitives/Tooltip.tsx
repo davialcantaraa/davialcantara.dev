@@ -8,17 +8,24 @@ interface TooltipProps {
   content: string;
   contentCSS?: CSS;
   arrowCSS?: CSS;
+  childCSS?: CSS;
+  containerCSS?: CSS;
+  isAsChild?: boolean;
+  onClickHandler?: () => void;
 }
 
 const TooltipProvider = TooltipPrimitive.Provider;
 const TooltipElement = TooltipPrimitive.Root;
-const TooltipTrigger = TooltipPrimitive.Trigger;
 
 export const Tooltip = ({
   children,
   content,
   contentCSS,
   arrowCSS,
+  childCSS,
+  containerCSS,
+  isAsChild = true,
+  onClickHandler,
 }: TooltipProps) => {
   const scaleIn = keyframes({
     '0%': { opacity: 0, transform: 'scale(0)' },
@@ -28,6 +35,10 @@ export const Tooltip = ({
   const StyledArrow = styled(TooltipPrimitive.Arrow, {
     fill: '$primary',
     ...arrowCSS,
+  });
+
+  const TooltipTrigger = styled(TooltipPrimitive.Trigger, {
+    ...containerCSS,
   });
 
   const StyledContent = styled(TooltipPrimitive.Content, {
@@ -48,11 +59,15 @@ export const Tooltip = ({
     ...contentCSS,
   });
 
+  const Child = styled('div', {
+    ...childCSS,
+  });
+
   return (
     <TooltipProvider delayDuration={20}>
       <TooltipElement>
-        <TooltipTrigger asChild>
-          <div>{children}</div>
+        <TooltipTrigger asChild={isAsChild} onClick={onClickHandler}>
+          <Child>{children}</Child>
         </TooltipTrigger>
         <StyledContent sideOffset={5}>
           <StyledArrow offset={7} />
