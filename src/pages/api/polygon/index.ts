@@ -1,6 +1,6 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
-import { polygonApi } from '../../services/axios';
-import { IReceivedNft } from '../../types/nfts';
+import { polygonApi } from '../../../services/axios';
+import { IReceivedNft } from '../../../types/nfts';
 
 export default async (req: NextApiRequest, res: NextApiResponse) => {
   const apiKey = process.env.POLYGON_API_KEY;
@@ -11,22 +11,29 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
 
   const { ownedNfts }: IReceivedNft = data;
 
-  const collections = ownedNfts.map(nft => ({
-    name: nft.title.split(' #')[0],
-  }));
+  const collections = ownedNfts.map(nft => nft.title.split(' #')[0]);
 
-  const nfts = collections.map(collection => ({
-    collectionName: collection.name.includes('#') ? '-' : collection.name,
-    openseaUrl: `https://opensea.io/collection/${collection.name
+  let filteredCollections: any = [];
+
+  collections.forEach(collection => {
+    if (!filteredCollections.includes(collection)) {
+      filteredCollections.push(collection);
+    }
+  });
+
+  const nfts = filteredCollections.map((collection: any) => ({
+    collectionName: collection.includes('#') ? '-' : collection,
+    openseaUrl: `https://opensea.io/collection/${collection
       .replace(' ', '-')
       .toLowerCase()}`,
     nfts: ownedNfts
-      .filter(nft => nft.title.split(' #')[0] === collection.name)
+      .filter(nft => nft.title.split(' #')[0] === collection)
       .map(nft => ({
         title: nft.title,
+        number: nft.title.split(' #')[1],
         description: nft.description,
         contract: nft.contract.address,
-        image: nft.metadata.image,
+        image: nft.media[0].gateway,
         id: nft.metadata.dna,
         openseaUrl: `https://opensea.io/assets/matic/${nft.contract.address}/${
           nft.title.split(' #')[1]

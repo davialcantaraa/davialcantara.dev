@@ -1,30 +1,33 @@
+/* eslint-disable no-undef */
 import Image from 'next/image';
 import { styled } from '../../../stitches.config';
+import { LazyImage } from '../LazyImage';
 
 interface AvatarProps {
   source: string;
   size: number;
+  bg?: string;
 }
 
-export const Avatar = ({ source, size }: AvatarProps) => {
+export const Avatar = ({ source, size, bg }: AvatarProps) => {
   const BoxShape = styled('div', {
     width: size,
     height: size,
-    background: 'red',
+    background: bg ? bg : '$primaryGradientA',
     clipPath: 'url(#nft_shape)',
     userSelect: 'none',
     pointerEvents: 'none',
+    overflow: 'hidden',
   });
 
   const CustomImage = styled(Image, {
-    objectFit: 'cover',
     userSelect: 'none',
     pointerEvents: 'none',
   });
 
   return (
-    <BoxShape>
-      <CustomImage src={source} width={size} height={size} />
+    <BoxShape as="span">
+      <LazyImage src={source} size={size} />
       <svg height="0" viewBox="0 0 200 188" width="0">
         <defs>
           <clipPath

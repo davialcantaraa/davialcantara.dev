@@ -42,7 +42,7 @@ export const ProjectCard = ({ repo }: ProjectCardProps) => {
               </Tooltip>
               <Tooltip content="Forks">
                 <ToolbarLink
-                  href={`https://github.com/divinurised/${repo.name}/forks`}
+                  href={`https://github.com/divinurised/${repo.name}/network/members`}
                   target="_blank"
                 >
                   <CustomCommitIcon />

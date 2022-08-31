@@ -29,10 +29,11 @@ export const Clipboard = ({
   return (
     <Tooltip
       content={`${isCopied ? 'Copied' : 'Copy'} ${tooltipContent}`}
-      isAsChild={false}
-      containerCSS={{
+      triggerCSS={{
         width: 'fit-content',
       }}
+      contentCSS={{ background: '$secondaryGradient', color: '$primary' }}
+      arrowCSS={{ fill: 'transparent' }}
       onClickHandler={handleCopyToClipBoard}
     >
       <Code>

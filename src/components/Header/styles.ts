@@ -17,6 +17,9 @@ import { styled } from '../../../stitches.config';
 export const Navbar = styled(ToolbarPrimitive.Root, {
   display: 'flex',
   width: '100%',
+  padding: '0 $10',
+  maxWidth: '$md',
+  margin: '0 auto',
   justifyContent: 'space-between',
 });
 
@@ -56,7 +59,7 @@ export const NavbarItem = styled(ToolbarPrimitive.Link, {
   cursor: 'pointer',
   '&:focus': {
     outline: 'none',
-    boxShadow: `0 0 0 1px ${violetA.violetA11}`,
+    boxShadow: `0 0 0 2px ${violetA.violetA11}`,
   },
   '&:hover': {
     background: '$secondaryGradient',
@@ -66,7 +69,7 @@ export const NavbarItem = styled(ToolbarPrimitive.Link, {
   },
   '&.activeLink': {
     background: '$primaryGradient',
-    boxShadow: `0 0 0 1px ${violetA.violetA11}`,
+    boxShadow: `0 0 0 2px ${violetA.violetA11}`,
   },
 });
 
@@ -89,6 +92,7 @@ export const CustomSunIcon = styled(SunIcon, {
 });
 export const CustomAvatarIcon = styled(BackpackIcon, {
   size: '$6',
+  color: '$primary',
 });
 
 export const CustomGithubIcon = styled(GitHubLogoIcon, {

@@ -14,16 +14,8 @@ interface WritingProps {
 
 const Writing = ({ posts }: WritingProps) => {
   return (
-    <Box
-      limit="md"
-      css={{
-        flexDirection: 'column',
-        justifyContent: 'flex-start',
-        padding: '$10',
-        gap: '$13',
-      }}
-    >
-      <VerticalBox as="section">
+    <Box variant="page">
+      <VerticalBox as="header">
         <Text type="title">Writing</Text>
         <Text type="paragraph">Just my dev log</Text>
       </VerticalBox>

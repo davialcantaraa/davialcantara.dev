@@ -23,7 +23,7 @@ const Post = ({ post }: PostProps) => {
         gap: '$11',
       }}
     >
-      <VerticalBox>
+      <VerticalBox as="header">
         <Text type="largeTitle">{post.title}</Text>
         <Text type="title" css={{ color: '$baseGray' }}>
           {post.subtitle}

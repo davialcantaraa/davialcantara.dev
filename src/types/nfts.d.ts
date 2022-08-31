@@ -6,6 +6,7 @@ export interface INftCollection {
 
 export interface INft {
   title: string;
+  number: number | string;
   description: string;
   contract: string;
   image: string;

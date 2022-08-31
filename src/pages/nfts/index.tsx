@@ -1,40 +1,62 @@
-import { Avatar } from '../../components/Avatar';
-import { Clipboard } from '../../components/Clipboard';
+import { GetStaticProps } from 'next';
+import { useRouter } from 'next/router';
+import { useEffect } from 'react';
+import { useAccount } from 'wagmi';
+import { DefaultProfile } from '../../components/DefaultProfile';
+import { NftCollectionCard } from '../../components/NftCollectionCard';
+import { CardContainer } from '../../components/NftCollectionCard/styles';
+import { Nothing } from '../../components/Nothing';
+import { ProfileConnectButton } from '../../components/ProfileConnectButton';
+import { SearchNft } from '../../components/SearchNft';
+import { nftApi } from '../../services/axios';
 import { Box } from '../../styles/primitives/Box';
 import { Text } from '../../styles/primitives/Text';
 import { VerticalBox } from '../../styles/primitives/VerticalBox';
 import { INftCollection } from '../../types/nfts';
-import { formatWalletAddress } from '../../utils/formatWalletAddress';
 
 interface NftsProps {
-  nfts: INftCollection;
+  nfts: INftCollection[];
 }
 
 const Nfts = ({ nfts }: NftsProps) => {
+  const { data: walletAccount } = useAccount();
+  const router = useRouter();
+
+  useEffect(() => {
+    if (walletAccount) {
+      router.push(`/nfts/${walletAccount.address}`);
+    } else {
+      router.push('/nfts');
+    }
+  }, [walletAccount]);
+
   return (
     <>
-      <Box
-        limit="md"
-        css={{
-          flexDirection: 'column',
-          justifyContent: 'flex-start',
-          padding: '$10',
-          gap: '$13',
-        }}
-      >
-        <VerticalBox as="section">
-          <Text type="title">NFTs</Text>
-          <Text type="paragraph">My NFTs</Text>
-          <Clipboard
-            clipboardContent={formatWalletAddress(
-              '0x1d1A113C517DA481dFb106292a8c134c2DcB7517',
-            )}
-            tooltipContent="0x1d1A113C517DA481dFb106292a8c134c2DcB7517"
-          />
-          <Avatar
-            source="https://i.pinimg.com/736x/0f/95/29/0f95293a9858952dc80a236c4904789f.jpg"
-            size={70}
-          />
+      <Box variant="page">
+        <VerticalBox as="header" css={{ gap: '$10' }}>
+          <VerticalBox>
+            <Text type="title">NFTs</Text>
+            <Text type="paragraph">My NFTs</Text>
+          </VerticalBox>
+          <SearchNft />
+          <Box css={{ justifyContent: 'space-between', alignItems: 'center' }}>
+            <DefaultProfile />
+            <ProfileConnectButton />
+          </Box>
+        </VerticalBox>
+        <VerticalBox>
+          {nfts.length ? (
+            <CardContainer type="multiple">
+              {nfts.map(collection => (
+                <NftCollectionCard
+                  key={collection.openseaUrl}
+                  collection={collection}
+                />
+              ))}
+            </CardContainer>
+          ) : (
+            <Nothing />
+          )}
         </VerticalBox>
       </Box>
     </>
@@ -43,11 +65,12 @@ const Nfts = ({ nfts }: NftsProps) => {
 
 export default Nfts;
 
-// export const getServerSideProps: GetServerSideProps = async () => {
-//   const { data: nfts } = await nftApi.get('/api/polygon');
-//   return {
-//     props: {
-//       nfts,
-//     },
-//   };
-// };
+export const getStaticProps: GetStaticProps = async () => {
+  const { data: nfts } = await nftApi.get('/api/polygon');
+  return {
+    props: {
+      nfts,
+    },
+    revalidate: 60 * 60 * 24, // 24 hours
+  };
+};

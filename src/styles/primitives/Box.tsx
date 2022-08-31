@@ -9,5 +9,15 @@ export const Box = styled('div', {
         margin: '0 auto',
       },
     },
+    variant: {
+      page: {
+        maxWidth: '$md',
+        margin: '0 auto',
+        flexDirection: 'column',
+        justifyContent: 'flex-start',
+        padding: '$10',
+        gap: '$13',
+      },
+    },
   },
 });

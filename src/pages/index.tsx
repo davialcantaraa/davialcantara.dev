@@ -10,15 +10,7 @@ import { VerticalBox } from '../styles/primitives/VerticalBox';
 
 const Home: NextPage<any> = ({ posts }) => {
   return (
-    <Box
-      limit="md"
-      css={{
-        flexDirection: 'column',
-        justifyContent: 'flex-start',
-        padding: '$10',
-        gap: '$13',
-      }}
-    >
+    <Box variant="page">
       <VerticalBox>
         <Text as="h1" type="title" css={{ cursor: 'help' }}>
           Davi Alcântara

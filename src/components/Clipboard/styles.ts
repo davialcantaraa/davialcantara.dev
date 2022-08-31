@@ -1,4 +1,3 @@
-import { mauveDark } from '@radix-ui/colors';
 import { CheckIcon, CopyIcon } from '@radix-ui/react-icons';
 import { styled } from '../../../stitches.config';
 
@@ -10,7 +9,7 @@ export const Code = styled('code', {
   display: 'flex',
   gap: '$2',
   alignItems: 'center',
-  background: mauveDark.mauve3,
+  background: '$semiDarkerGray',
   borderRadius: '$3',
   padding: '$1',
   cursor: 'default',

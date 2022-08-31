@@ -1,3 +1,4 @@
+import { purple } from '@radix-ui/colors';
 import { GetStaticProps } from 'next';
 import { styled } from '../../../stitches.config';
 import { Nothing } from '../../components/Nothing';
@@ -17,7 +18,7 @@ export const HoverElement = styled('div', {
   opacity: 0,
   visibility: 'hidden',
   position: 'absolute',
-  padding: '$8 $4',
+  padding: '$8',
   width: '100%',
   height: '100%',
   boxSizing: 'content-box',
@@ -30,22 +31,13 @@ export const HoverElement = styled('div', {
 });
 
 const Projects = ({ repos }: ProjectProps) => {
-  console.log(repos);
   return (
-    <Box
-      limit="md"
-      css={{
-        flexDirection: 'column',
-        justifyContent: 'flex-start',
-        padding: '$10',
-        gap: '$13',
-      }}
-    >
-      <VerticalBox as="section">
+    <Box variant="page">
+      <VerticalBox as="header">
         <Text type="title">Projects</Text>
         <Text type="paragraph">My own creations</Text>
       </VerticalBox>
-      <VerticalBox as="section">
+      <VerticalBox>
         {repos.length ? (
           <>
             {repos.map(repo => (
@@ -60,6 +52,7 @@ const Projects = ({ repos }: ProjectProps) => {
         as="a"
         type="title"
         href="https://github.com/divinurised"
+        tabIndex={0}
         css={{
           position: 'relative',
           transition: '$base',
@@ -67,6 +60,12 @@ const Projects = ({ repos }: ProjectProps) => {
           justifyContent: 'center',
           alignItems: 'center',
           marginBottom: '$4',
+          outlineWidth: 0,
+          '&:focus-visible': {
+            [`& ${HoverElement}`]: {
+              outline: `2px solid ${purple.purple9}`,
+            },
+          },
           '&:hover': {
             [`& ${HoverElement}`]: {
               opacity: 1,
