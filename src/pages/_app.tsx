@@ -3,7 +3,7 @@ import { AppProps } from 'next/app';
 import { globalStyles } from '../../stitches.config';
 import { Header } from '../components/Header';
 import { Container } from '../styles/primitives/Container';
-import { Providers } from './_providers';
+import Providers from './_providers';
 
 globalStyles();
 

@@ -12,7 +12,7 @@ import { Box } from '../../styles/primitives/Box';
 import { Text } from '../../styles/primitives/Text';
 import { VerticalBox } from '../../styles/primitives/VerticalBox';
 import { INftCollection } from '../../@types/nfts';
-import { Tab, TabContent, TabList, TabTrigger } from './styles';
+import { Tab, TabContent, TabList, TabTrigger } from './_styles';
 
 interface GuestNftsProps {
   guestNfts: INftCollection[];

@@ -13,7 +13,7 @@ interface ProvidersProps {
   children: React.ReactNode;
 }
 
-export const Providers = ({ children }: ProvidersProps) => {
+const Providers = ({ children }: ProvidersProps) => {
   return (
     <ThemeProvider
       attribute="class"
@@ -42,3 +42,5 @@ export const Providers = ({ children }: ProvidersProps) => {
     </ThemeProvider>
   );
 };
+
+export default Providers;
