@@ -2,7 +2,6 @@ import Image from 'next/image';
 import { useRouter } from 'next/router';
 import { CaretDown, CaretRight } from 'phosphor-react';
 import { useState } from 'react';
-import { useNetwork } from 'wagmi';
 import { EthereumIcon } from '../../../public/assets/EthereumIcon';
 import { MaticIcon } from '../../../public/assets/MaticIcon';
 import { INftCollection } from '../../@types/nfts';
@@ -113,6 +112,7 @@ export const NftCollectionCard = ({ collection }: NftCollectionCardProps) => {
                   width={200}
                   height={200}
                   objectFit="cover"
+                  alt="Nft image"
                 />
               </Box>
               <NftText type="paragraph">

@@ -4,7 +4,6 @@ import { useRef, useState } from 'react';
 import { EthereumIcon } from '../../../public/assets/EthereumIcon';
 import { MaticIcon } from '../../../public/assets/MaticIcon';
 import { Box } from '../../styles/primitives/Box';
-import { CustomChevronDownIcon } from '../NftCollectionCard/styles';
 import { CustomLoadingIcon } from '../ProfileConnectButton';
 import {
   CustomSearchIcon,

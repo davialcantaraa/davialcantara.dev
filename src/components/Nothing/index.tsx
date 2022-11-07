@@ -1,6 +1,4 @@
-import { InfoCircledIcon } from '@radix-ui/react-icons';
 import { Info } from 'phosphor-react';
-import { styled } from '../../../stitches.config';
 import { Box } from '../../styles/primitives/Box';
 import { Text } from '../../styles/primitives/Text';
 

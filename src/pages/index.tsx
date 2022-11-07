@@ -3,7 +3,6 @@ import { purple } from '@radix-ui/colors';
 import type { GetServerSideProps, NextPage } from 'next';
 import { Lightning, PencilSimple } from 'phosphor-react';
 import { styled } from '../../stitches.config';
-import { CustomLetterIcon } from '../components/Header/styles';
 import { Nothing } from '../components/Nothing';
 import { ProjectCard } from '../components/ProjectCard';
 import { WritingCard } from '../components/WritingCard/index';

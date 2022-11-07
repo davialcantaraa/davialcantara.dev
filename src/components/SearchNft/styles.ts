@@ -1,4 +1,3 @@
-import { MagnifyingGlassIcon } from '@radix-ui/react-icons';
 import * as LabelPrimitive from '@radix-ui/react-label';
 import * as SelectPrimitive from '@radix-ui/react-select';
 import { MagnifyingGlass } from 'phosphor-react';

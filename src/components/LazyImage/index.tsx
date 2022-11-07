@@ -1,6 +1,5 @@
 import { CSS } from '@stitches/react/types/css-util';
-import Image, { ImageProps } from 'next/image';
-import React, { useState } from 'react';
+import { ImageProps } from 'next/image';
 import { styled } from '../../../stitches.config';
 
 interface LazyImageProps extends ImageProps {

@@ -1,7 +1,7 @@
 import { Check, Copy } from 'phosphor-react';
 import { useEffect, useState } from 'react';
 import { Tooltip } from '../../styles/primitives/Tooltip';
-import { Code, CustomCheckIcon, CustomCopyIcon } from './styles';
+import { Code } from './styles';
 
 interface ClipboardProps {
   tooltipContent: string;

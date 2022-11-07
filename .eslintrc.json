@@ -36,6 +36,7 @@
     "jsx-a11y/label-has-associated-control": "off",
     "import/no-extraneous-dependencies": ["error", { "devDependencies": true }],
     "import/prefer-default-export": "off",
-    "import/extensions": "off"
+    "import/extensions": "off",
+    "import/no-anonymous-default-export": "off"
   }
 }

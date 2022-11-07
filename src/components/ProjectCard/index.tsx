@@ -1,25 +1,10 @@
+import { ArrowSquareOut, GitBranch, GithubLogo, Star } from 'phosphor-react';
+import { IRepo } from '../../@types/repositories';
 import { Text } from '../../styles/primitives/Text';
 import { Tooltip } from '../../styles/primitives/Tooltip';
-import { IRepo } from '../../@types/repositories';
 import { Nothing } from '../Nothing';
 import { CardContainer, HoverElement } from '../WritingCard/styles';
-import {
-  CustomCommitIcon,
-  CustomExternalLinkIcon,
-  CustomGitHubLogoIcon,
-  CustomStartIcon,
-  Toolbar,
-  ToolbarDivider,
-  ToolbarGroup,
-  ToolbarLink,
-} from './styles';
-import {
-  ArrowSquareOut,
-  GitBranch,
-  GitFork,
-  GithubLogo,
-  Star,
-} from 'phosphor-react';
+import { Toolbar, ToolbarDivider, ToolbarGroup, ToolbarLink } from './styles';
 
 interface ProjectCardProps {
   repo: IRepo;

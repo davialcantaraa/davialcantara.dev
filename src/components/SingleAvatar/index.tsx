@@ -1,13 +1,12 @@
 /* eslint-disable no-undef */
 import { styled } from '../../../stitches.config';
-import { LazyImage } from '../LazyImage';
 
 interface SingleAvatarProps {
   size: number;
   bg?: string;
 }
 
-export const SingleAvatar = ({ source, size, bg }: SingleAvatarProps) => {
+export const SingleAvatar = ({ size, bg }: SingleAvatarProps) => {
   const BoxShape = styled('div', {
     width: size,
     height: size,

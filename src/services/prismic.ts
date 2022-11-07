@@ -16,15 +16,15 @@ export function linkResolver(doc: any) {
   }
 }
 
-export function createClient(config = {}) {
+export function createClient(config: any) {
   const client = prismic.createClient(endpoint, {
     ...config,
   });
 
   enableAutoPreviews({
     client,
-    previewData: config.previewData,
-    req: config.req,
+    previewData: config.previewData as any,
+    req: config.req as any,
   });
 
   return client;

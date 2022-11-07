@@ -6,7 +6,6 @@ import { VerticalBox } from '../../styles/primitives/VerticalBox';
 import { formatWalletAddress } from '../../utils/formatWalletAddress';
 import { Avatar } from '../Avatar';
 import { Clipboard } from '../Clipboard';
-import { CustomExternalLinkIcon } from '../NftCollectionCard/styles';
 
 export const DefaultProfile = () => {
   return (
