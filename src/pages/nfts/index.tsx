@@ -1,4 +1,4 @@
-import { GetStaticProps } from 'next';
+import { GetServerSideProps, GetStaticProps } from 'next';
 import { useRouter } from 'next/router';
 import { useEffect } from 'react';
 import { useAccount } from 'wagmi';
@@ -65,7 +65,7 @@ const Nfts = ({ nfts }: NftsProps) => {
 
 export default Nfts;
 
-export const getStaticProps: GetStaticProps = async () => {
+export const getServerSideRendering: GetServerSideProps = async () => {
   const { data: nfts } = await nftApi.get('/api/polygon');
   return {
     props: {
