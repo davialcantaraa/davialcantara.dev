@@ -65,11 +65,11 @@ const Nfts = ({ nfts }: NftsProps) => {
 
 export default Nfts;
 
-export const getServerSideRendering: GetServerSideProps = async () => {
+export const getServerSideProps: GetServerSideProps = async () => {
   const { data: nfts } = await nftApi.get('/api/polygon');
   return {
     props: {
-      nfts,
+      nfts: nfts || [],
     },
     revalidate: 60 * 60 * 24, // 24 hours
   };
