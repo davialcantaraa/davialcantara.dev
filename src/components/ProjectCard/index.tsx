@@ -1,6 +1,6 @@
 import { Text } from '../../styles/primitives/Text';
 import { Tooltip } from '../../styles/primitives/Tooltip';
-import { IRepo } from '../../types/repositories';
+import { IRepo } from '../../@types/repositories';
 import { Nothing } from '../Nothing';
 import { CardContainer, HoverElement } from '../WritingCard/styles';
 import {
@@ -13,6 +13,13 @@ import {
   ToolbarGroup,
   ToolbarLink,
 } from './styles';
+import {
+  ArrowSquareOut,
+  GitBranch,
+  GitFork,
+  GithubLogo,
+  Star,
+} from 'phosphor-react';
 
 interface ProjectCardProps {
   repo: IRepo;
@@ -36,7 +43,7 @@ export const ProjectCard = ({ repo }: ProjectCardProps) => {
                   href={`https://github.com/divinurised/${repo.name}/stargazers`}
                   target="_blank"
                 >
-                  <CustomStartIcon />
+                  <Star />
                   <Text css={{ color: '$primary' }}>{repo.stars}</Text>
                 </ToolbarLink>
               </Tooltip>
@@ -45,7 +52,7 @@ export const ProjectCard = ({ repo }: ProjectCardProps) => {
                   href={`https://github.com/divinurised/${repo.name}/network/members`}
                   target="_blank"
                 >
-                  <CustomCommitIcon />
+                  <GitBranch />
                   <Text css={{ color: '$primary' }}>{repo.forks}</Text>
                 </ToolbarLink>
               </Tooltip>
@@ -54,12 +61,12 @@ export const ProjectCard = ({ repo }: ProjectCardProps) => {
             <ToolbarGroup>
               <Tooltip content="Homepage">
                 <ToolbarLink href={repo.productionUrl} target="_blank">
-                  <CustomExternalLinkIcon />
+                  <ArrowSquareOut />
                 </ToolbarLink>
               </Tooltip>
               <Tooltip content="Repository">
                 <ToolbarLink href={repo.repositoryUrl} target="_blank">
-                  <CustomGitHubLogoIcon />
+                  <GithubLogo />
                 </ToolbarLink>
               </Tooltip>
             </ToolbarGroup>

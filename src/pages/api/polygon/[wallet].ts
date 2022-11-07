@@ -1,6 +1,6 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
 import { polygonApi } from '../../../services/axios';
-import { IReceivedNft } from '../../../types/nfts';
+import { IReceivedNft } from '../../../@types/nfts';
 
 export default async (req: NextApiRequest, res: NextApiResponse) => {
   if (req.query.wallet.length < 42) {

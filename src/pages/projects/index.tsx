@@ -7,7 +7,7 @@ import { githubApi } from '../../services/axios';
 import { Box } from '../../styles/primitives/Box';
 import { Text } from '../../styles/primitives/Text';
 import { VerticalBox } from '../../styles/primitives/VerticalBox';
-import { IRepo } from '../../types/repositories';
+import { IRepo } from '../../@types/repositories';
 import { projects } from '../../utils/projects';
 
 interface ProjectProps {
@@ -35,7 +35,7 @@ const Projects = ({ repos }: ProjectProps) => {
     <Box variant="page">
       <VerticalBox as="header">
         <Text type="title">Projects</Text>
-        <Text type="paragraph">My own creations</Text>
+        <Text type="paragraph">My latest projects in github</Text>
       </VerticalBox>
       <VerticalBox>
         {repos.length ? (
@@ -88,7 +88,7 @@ export const getStaticProps: GetStaticProps = async () => {
   let response: any = [];
 
   for await (const project of projects) {
-    const { data }: any = await githubApi.get(`/repos/divinurised/${project}`);
+    const { data }: any = await githubApi.get(`/repos/davialc/${project}`);
     response.push(data);
   }
 

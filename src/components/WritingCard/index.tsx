@@ -2,7 +2,7 @@ import * as prismicH from '@prismicio/helpers';
 import Link from 'next/link';
 import { Text } from '../../styles/primitives/Text';
 import { Time } from '../../styles/primitives/Time';
-import { IPost } from '../../types/posts';
+import { IPost } from '../../@types/posts';
 import { Nothing } from '../Nothing';
 import { CardContainer, HoverElement } from './styles';
 

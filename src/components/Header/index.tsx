@@ -1,21 +1,25 @@
 import { useTheme } from 'next-themes';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
+import {
+  CirclesThree,
+  GithubLogo,
+  HouseLine,
+  Lightning,
+  LinkedinLogo,
+  List,
+  MoonStars,
+  PencilSimple,
+  Sun,
+  User,
+  Wallet,
+} from 'phosphor-react';
+import { useAccount } from 'wagmi';
 import { Box } from '../../styles/primitives/Box';
 import { Tooltip } from '../../styles/primitives/Tooltip';
 import { CustomConnectButton } from '../CustomConnectButton';
 import { MobileMenu } from '../MobileMenu/index';
 import {
-  CustomAvatarIcon,
-  CustomGithubIcon,
-  CustomHomeIcon,
-  CustomLetterIcon,
-  CustomLightningIcon,
-  CustomMobileMenuIcon,
-  CustomMoonIcon,
-  CustomNFTIcon,
-  CustomSunIcon,
-  CustomTwitterIcon,
   Divider,
   Navbar,
   NavbarButton,
@@ -26,6 +30,7 @@ import {
 export const Header = () => {
   const { setTheme, theme } = useTheme();
   const { asPath } = useRouter();
+  const { address } = useAccount();
   return (
     <Box
       css={{
@@ -41,14 +46,14 @@ export const Header = () => {
       <Navbar>
         <NavbarGroup data-mobile-menu>
           <MobileMenu>
-            <CustomMobileMenuIcon />
+            <List />
           </MobileMenu>
         </NavbarGroup>
         <NavbarGroup data-desktop-navbar>
           <Tooltip content="Home" isAsChild={false}>
             <Link href="/">
               <NavbarItem className={asPath === '/' ? 'activeLink' : undefined}>
-                <CustomHomeIcon />
+                <HouseLine />
               </NavbarItem>
             </Link>
           </Tooltip>
@@ -57,7 +62,7 @@ export const Header = () => {
               <NavbarItem
                 className={asPath === '/writing' ? 'activeLink' : undefined}
               >
-                <CustomLetterIcon />
+                <PencilSimple />
               </NavbarItem>
             </Link>
           </Tooltip>
@@ -66,7 +71,7 @@ export const Header = () => {
               <NavbarItem
                 className={asPath === '/projects' ? 'activeLink' : undefined}
               >
-                <CustomLightningIcon />
+                <Lightning />
               </NavbarItem>
             </Link>
           </Tooltip>
@@ -75,19 +80,22 @@ export const Header = () => {
               <NavbarItem
                 className={asPath === '/nfts' ? 'activeLink' : undefined}
               >
-                <CustomNFTIcon />
+                <CirclesThree />
               </NavbarItem>
             </Link>
           </Tooltip>
           <Divider />
           <Tooltip content="Github">
-            <NavbarItem href="https://twitter.com" target="_blank">
-              <CustomGithubIcon />
+            <NavbarItem href="https://github.com/davialc" target="_blank">
+              <GithubLogo />
             </NavbarItem>
           </Tooltip>
-          <Tooltip content="Twitter">
-            <NavbarItem href="https://twitter.com" target="_blank">
-              <CustomTwitterIcon />
+          <Tooltip content="Linkedin">
+            <NavbarItem
+              href="https://www.linkedin.com/in/davialcantara/"
+              target="_blank"
+            >
+              <LinkedinLogo />
             </NavbarItem>
           </Tooltip>
         </NavbarGroup>
@@ -102,13 +110,11 @@ export const Header = () => {
                 },
               }}
             >
-              {theme === 'light' ? <CustomMoonIcon /> : <CustomSunIcon />}
+              {theme === 'light' ? <MoonStars /> : <Sun />}
             </NavbarButton>
           </Tooltip>
           <CustomConnectButton>
-            <NavbarButton>
-              <CustomAvatarIcon />
-            </NavbarButton>
+            <NavbarButton>{address ? <User /> : <Wallet />}</NavbarButton>
           </CustomConnectButton>
         </NavbarGroup>
       </Navbar>

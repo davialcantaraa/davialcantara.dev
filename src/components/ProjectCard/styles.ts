@@ -23,6 +23,10 @@ export const ToolbarLink = styled(ToolbarPrimitive.Link, {
   display: 'flex',
   alignItems: 'center',
   gap: '$1',
+  svg: {
+    color: '$primary',
+    size: '$6',
+  },
 });
 
 export const ToolbarDivider = styled('div', {

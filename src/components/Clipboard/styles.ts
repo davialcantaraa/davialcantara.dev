@@ -13,6 +13,10 @@ export const Code = styled('code', {
   borderRadius: '$3',
   padding: '$1',
   cursor: 'default',
+  svg: {
+    color: '$primary',
+    size: '$6',
+  },
 });
 
 export const CustomCopyIcon = styled(CopyIcon, {

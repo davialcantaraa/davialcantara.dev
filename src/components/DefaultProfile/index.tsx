@@ -1,3 +1,4 @@
+import { ArrowSquareOut } from 'phosphor-react';
 import { Box } from '../../styles/primitives/Box';
 import { Text } from '../../styles/primitives/Text';
 import { Tooltip } from '../../styles/primitives/Tooltip';
@@ -29,6 +30,10 @@ export const DefaultProfile = () => {
             triggerCSS={{
               width: 'fit-content',
               lineHeight: 0,
+              svg: {
+                color: '$primary',
+                size: '$6',
+              },
             }}
             contentCSS={{
               background: '$secondaryGradient',
@@ -37,7 +42,7 @@ export const DefaultProfile = () => {
             arrowCSS={{ fill: 'transparent' }}
           >
             <a href="/" target="_blank" rel="noreferrer">
-              <CustomExternalLinkIcon />
+              <ArrowSquareOut />
             </a>
           </Tooltip>
         </Text>

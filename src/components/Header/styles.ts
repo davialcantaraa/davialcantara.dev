@@ -71,6 +71,10 @@ export const NavbarItem = styled(ToolbarPrimitive.Link, {
     background: '$primaryGradient',
     boxShadow: `0 0 0 2px ${violetA.violetA11}`,
   },
+  svg: {
+    color: '$primary',
+    size: '$6',
+  },
 });
 
 export const NavbarButton = styled(ToolbarPrimitive.Button, NavbarItem);

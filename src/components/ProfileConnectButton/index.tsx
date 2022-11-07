@@ -1,9 +1,8 @@
-import { PersonIcon, PlusIcon } from '@radix-ui/react-icons';
 import { ConnectButton } from '@rainbow-me/rainbowkit';
 import { useRouter } from 'next/router';
+import { CircleNotch, Plus, User } from 'phosphor-react';
 import { useState } from 'react';
-import { AiOutlineLoading3Quarters } from 'react-icons/ai';
-import { useAccount, useNetwork } from 'wagmi';
+import { useAccount, useBalance, useNetwork } from 'wagmi';
 import { keyframes, styled } from '../../../stitches.config';
 import { Box } from '../../styles/primitives/Box';
 import { Text } from '../../styles/primitives/Text';
@@ -13,10 +12,11 @@ import { formatWalletAddress } from '../../utils/formatWalletAddress';
 import { Avatar } from '../Avatar';
 import { Clipboard } from '../Clipboard';
 import { CustomNFTIcon } from '../Header/styles';
+import { SingleAvatar } from '../SingleAvatar';
 
 const PLACEHOLDER_WALLET_ADDRESS = '0x000000000000000';
 
-export const CustomPlusIcon = styled(PlusIcon, {
+export const CustomPlusIcon = styled(Plus, {
   size: '$9',
   color: 'transparent',
   position: 'absolute',
@@ -39,14 +39,14 @@ const infiniteRotate = keyframes({
   },
 });
 
-export const CustomLoadingIcon = styled(AiOutlineLoading3Quarters, {
-  size: '$9',
+export const CustomLoadingIcon = styled(CircleNotch, {
+  size: '$6',
   color: '$primary',
   animation: `${infiniteRotate} 3s infinite linear`,
   position: 'absolute',
 });
 
-const CustomAccountIcon = styled(PersonIcon, {
+const CustomAccountIcon = styled(User, {
   size: '$9',
   color: 'transparent',
   position: 'absolute',
@@ -60,16 +60,13 @@ export const ProfileConnectButton = () => {
   const [isLoading, setIsLoading] = useState(false);
   const router = useRouter();
   const { wallet: activePath } = router.query;
-  const { data: accountInfo } = useAccount();
-  const { activeChain } = useNetwork();
+  const { address } = useAccount();
+  const { chain } = useNetwork();
+  console.log(chain);
 
   const handleShowGuestNfts = () => {
     setIsLoading(true);
-    router.push(
-      `/nfts/${
-        accountInfo?.address
-      }?network=${activeChain?.name.toLowerCase()}`,
-    );
+    router.push(`/nfts/${address}?network=${chain?.name.toLowerCase()}`);
   };
 
   return (
@@ -118,7 +115,7 @@ export const ProfileConnectButton = () => {
                         }}
                       >
                         <CustomPlusIcon />
-                        <Avatar source={'/'} size={70} />
+                        <SingleAvatar size={70} />
                       </Box>
                     </Tooltip>
                     <VerticalBox css={{ gap: '$1' }}>
@@ -179,11 +176,7 @@ export const ProfileConnectButton = () => {
                             },
                           }}
                         >
-                          <Avatar
-                            source="/"
-                            size={70}
-                            bg="$secondaryGradient"
-                          />
+                          <SingleAvatar size={70} bg="$secondaryGradient" />
                           {isLoading ? (
                             <CustomLoadingIcon />
                           ) : (
@@ -209,11 +202,7 @@ export const ProfileConnectButton = () => {
                             },
                           }}
                         >
-                          <Avatar
-                            source="/"
-                            size={70}
-                            bg="$secondaryGradient"
-                          />
+                          <SingleAvatar size={70} bg="$secondaryGradient" />
                           <CustomAccountIcon />
                         </Box>
                       </Tooltip>

@@ -1,3 +1,4 @@
+import { Check, Copy } from 'phosphor-react';
 import { useEffect, useState } from 'react';
 import { Tooltip } from '../../styles/primitives/Tooltip';
 import { Code, CustomCheckIcon, CustomCopyIcon } from './styles';
@@ -38,7 +39,7 @@ export const Clipboard = ({
     >
       <Code>
         {clipboardContent}
-        {isCopied ? <CustomCheckIcon /> : <CustomCopyIcon />}
+        {isCopied ? <Check /> : <Copy />}
       </Code>
     </Tooltip>
   );

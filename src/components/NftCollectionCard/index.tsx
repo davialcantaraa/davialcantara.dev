@@ -1,19 +1,21 @@
 import Image from 'next/image';
+import { useRouter } from 'next/router';
+import { CaretDown, CaretRight } from 'phosphor-react';
 import { useState } from 'react';
+import { useNetwork } from 'wagmi';
+import { EthereumIcon } from '../../../public/assets/EthereumIcon';
 import { MaticIcon } from '../../../public/assets/MaticIcon';
+import { INftCollection } from '../../@types/nfts';
 import { Box } from '../../styles/primitives/Box';
 import { Text } from '../../styles/primitives/Text';
 import { Tooltip } from '../../styles/primitives/Tooltip';
 import { VerticalBox } from '../../styles/primitives/VerticalBox';
-import { INftCollection } from '../../types/nfts';
 import { LazyImage } from '../LazyImage';
 import {
   CardContent,
   CardHeader,
   CardItem,
   CardTrigger,
-  CustomChevronDownIcon,
-  CustomChevronRightIcon,
   CustomExternalLinkIcon,
   HoverElement,
   NftContainer,
@@ -27,6 +29,9 @@ interface NftCollectionCardProps {
 
 export const NftCollectionCard = ({ collection }: NftCollectionCardProps) => {
   const [isCardOpen, setIsCardOpen] = useState(false);
+  const { query } = useRouter();
+  const { network } = query;
+
   return (
     <CardItem value={collection.collectionName} data-nft-card>
       <CardHeader asChild>
@@ -36,13 +41,13 @@ export const NftCollectionCard = ({ collection }: NftCollectionCardProps) => {
               alignItems: 'center',
               gap: '$3',
               width: '100%',
+              svg: {
+                color: '$primary',
+                size: '$6',
+              },
             }}
           >
-            {isCardOpen ? (
-              <CustomChevronDownIcon />
-            ) : (
-              <CustomChevronRightIcon />
-            )}
+            {isCardOpen ? <CaretDown /> : <CaretRight />}
             <Box
               css={{
                 borderRadius: 9999,
@@ -51,11 +56,7 @@ export const NftCollectionCard = ({ collection }: NftCollectionCardProps) => {
                 animation: `${skeletonLoader} 3s 2s infinite`,
               }}
             >
-              <LazyImage
-                src={`https://res.cloudinary.com/demo/image/fetch/${collection.nfts[0].image}`}
-                size={50}
-                priority
-              />
+              <LazyImage src={collection.nfts[0].image} size={50} priority />
             </Box>
             <VerticalBox css={{ gap: '$1' }}>
               <Text type="paragraph">{collection.collectionName}</Text>
@@ -67,7 +68,7 @@ export const NftCollectionCard = ({ collection }: NftCollectionCardProps) => {
                   zIndex: 3,
                 }}
               >
-                <MaticIcon />
+                {network === 'ethereum' ? <EthereumIcon /> : <MaticIcon />}
               </Tooltip>
             </VerticalBox>
             <Box
@@ -83,7 +84,7 @@ export const NftCollectionCard = ({ collection }: NftCollectionCardProps) => {
                 <>
                   <LazyImage
                     key={nft.id}
-                    src={`https://res.cloudinary.com/demo/image/fetch/${nft.image}`}
+                    src={nft.image}
                     size={30}
                     customCSS={{ borderRadius: '$2' }}
                     priority

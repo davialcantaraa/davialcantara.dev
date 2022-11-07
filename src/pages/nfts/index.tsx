@@ -12,19 +12,19 @@ import { nftApi } from '../../services/axios';
 import { Box } from '../../styles/primitives/Box';
 import { Text } from '../../styles/primitives/Text';
 import { VerticalBox } from '../../styles/primitives/VerticalBox';
-import { INftCollection } from '../../types/nfts';
+import { INftCollection } from '../../@types/nfts';
 
 interface NftsProps {
   nfts: INftCollection[];
 }
 
 const Nfts = ({ nfts }: NftsProps) => {
-  const { data: walletAccount } = useAccount();
+  const { address: walletAccount } = useAccount();
   const router = useRouter();
 
   useEffect(() => {
     if (walletAccount) {
-      router.push(`/nfts/${walletAccount.address}`);
+      router.push(`/nfts/${walletAccount}`);
     } else {
       router.push('/nfts');
     }
@@ -36,7 +36,7 @@ const Nfts = ({ nfts }: NftsProps) => {
         <VerticalBox as="header" css={{ gap: '$10' }}>
           <VerticalBox>
             <Text type="title">NFTs</Text>
-            <Text type="paragraph">My NFTs</Text>
+            <Text type="paragraph">Web3 playground</Text>
           </VerticalBox>
           <SearchNft />
           <Box css={{ justifyContent: 'space-between', alignItems: 'center' }}>

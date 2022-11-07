@@ -11,7 +11,7 @@ import { nftApi } from '../../services/axios';
 import { Box } from '../../styles/primitives/Box';
 import { Text } from '../../styles/primitives/Text';
 import { VerticalBox } from '../../styles/primitives/VerticalBox';
-import { INftCollection } from '../../types/nfts';
+import { INftCollection } from '../../@types/nfts';
 import { Tab, TabContent, TabList, TabTrigger } from './styles';
 
 interface GuestNftsProps {
@@ -21,16 +21,16 @@ interface GuestNftsProps {
 
 const GuestNfts = ({ guestNfts, nfts }: GuestNftsProps) => {
   const router = useRouter();
-  const { data: walletAccount } = useAccount();
+  const { address } = useAccount();
   const guestWallet = router.query.wallet;
-  const connectedWallet = walletAccount?.address;
+  const connectedWallet = address;
 
   return (
     <Box variant="page">
       <VerticalBox as="header" css={{ gap: '$10' }}>
         <VerticalBox>
           <Text type="title">NFTs</Text>
-          <Text type="paragraph">My NFTs</Text>
+          <Text type="paragraph">NFTs playground</Text>
         </VerticalBox>
         <SearchNft />
         <Box css={{ justifyContent: 'space-between', alignItems: 'center' }}>

@@ -8,6 +8,12 @@ const nextConfig = {
       'ipfs.io',
       'res.cloudinary.com',
     ],
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: '**',
+      },
+    ],
   },
 };
 

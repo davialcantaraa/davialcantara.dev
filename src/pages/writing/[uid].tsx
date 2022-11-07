@@ -6,11 +6,19 @@ import { Box } from '../../styles/primitives/Box';
 import { Text } from '../../styles/primitives/Text';
 import { Time } from '../../styles/primitives/Time';
 import { VerticalBox } from '../../styles/primitives/VerticalBox';
-import { IPost } from '../../types/posts';
+import { IPost } from '../../@types/posts';
+import { styled } from '../../../stitches.config';
 
 interface PostProps {
   post: IPost;
 }
+
+const StyledImage = styled('img', {
+  boxSizing: 'border-box',
+  borderRadius: '$6',
+});
+
+const StyledCode = styled('pre');
 
 const Post = ({ post }: PostProps) => {
   return (
@@ -40,8 +48,18 @@ const Post = ({ post }: PostProps) => {
         <PrismicRichText
           field={post.content}
           components={{
-            paragraph: ({ children }) => (
-              <Text type="paragraph">{children}</Text>
+            paragraph: ({ children }: any) => (
+              <Text type="paragraph" css={{ margin: '$4 0' }}>
+                {children}
+              </Text>
+            ),
+            image: ({ node: { url } }: any) => (
+              <>
+                <StyledImage src={url} />
+              </>
+            ),
+            preformatted: ({ children }: any) => (
+              <StyledCode css={{ margin: '$4 0' }}>{children}</StyledCode>
             ),
           }}
         />

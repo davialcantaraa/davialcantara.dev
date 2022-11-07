@@ -1,1 +1,1 @@
-export const projects = ['lofi-me', 'reaktor-me', 'pokedex-me'];
+export const projects = ['Horus-UI', 'lofi-me', 'reaktor-me'];

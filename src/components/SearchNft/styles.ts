@@ -1,6 +1,7 @@
 import { MagnifyingGlassIcon } from '@radix-ui/react-icons';
 import * as LabelPrimitive from '@radix-ui/react-label';
 import * as SelectPrimitive from '@radix-ui/react-select';
+import { MagnifyingGlass } from 'phosphor-react';
 import { styled } from '../../../stitches.config';
 
 export const Label = styled(LabelPrimitive.Root, {
@@ -40,7 +41,7 @@ export const Form = styled('form', {
   },
 });
 
-export const CustomSearchIcon = styled(MagnifyingGlassIcon, {
+export const CustomSearchIcon = styled(MagnifyingGlass, {
   size: '$6',
   color: '$primary',
   position: 'absolute',
@@ -60,6 +61,10 @@ export const SelectNetworkTrigger = styled(SelectPrimitive.Trigger, {
 });
 export const SelectNetworkIcon = styled(SelectPrimitive.Icon, {
   lineHeight: 0,
+  svg: {
+    color: '$primary',
+    size: '$6',
+  },
 });
 
 export const SelectNetworkContent = styled(SelectPrimitive.Content, {
@@ -81,6 +86,7 @@ export const SelectNetworkItem = styled(SelectPrimitive.Item, {
   alignItems: 'center',
   padding: '$1',
   borderRadius: '$2',
+  cursor: 'pointer',
   '&:hover': {
     background: '$darkGray',
   },

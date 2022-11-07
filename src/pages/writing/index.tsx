@@ -6,7 +6,7 @@ import { createClient } from '../../services/prismic';
 import { Box } from '../../styles/primitives/Box';
 import { Text } from '../../styles/primitives/Text';
 import { VerticalBox } from '../../styles/primitives/VerticalBox';
-import { IPost } from '../../types/posts';
+import { IPost } from '../../@types/posts';
 
 interface WritingProps {
   posts: IPost[];
@@ -17,7 +17,6 @@ const Writing = ({ posts }: WritingProps) => {
     <Box variant="page">
       <VerticalBox as="header">
         <Text type="title">Writing</Text>
-        <Text type="paragraph">Just my dev log</Text>
       </VerticalBox>
       <VerticalBox as="section">
         {posts.length ? (

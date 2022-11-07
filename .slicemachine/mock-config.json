@@ -20,5 +20,8 @@
         }
       }
     }
+  },
+  "slices": {
+    "DesignSystem": {}
   }
 }

@@ -1,4 +1,5 @@
 import { useRouter } from 'next/router';
+import { CaretDown } from 'phosphor-react';
 import { useRef, useState } from 'react';
 import { EthereumIcon } from '../../../public/assets/EthereumIcon';
 import { MaticIcon } from '../../../public/assets/MaticIcon';
@@ -72,7 +73,7 @@ export const SearchNft = () => {
         <SelectNetworkTrigger>
           <SelectNetworkValue aria-label={networkValue} />
           <SelectNetworkIcon>
-            <CustomChevronDownIcon />
+            <CaretDown />
           </SelectNetworkIcon>
         </SelectNetworkTrigger>
         <SelectNetworkContent>

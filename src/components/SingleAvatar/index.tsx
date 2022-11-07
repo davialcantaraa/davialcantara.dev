@@ -2,13 +2,12 @@
 import { styled } from '../../../stitches.config';
 import { LazyImage } from '../LazyImage';
 
-interface AvatarProps {
-  source: string;
+interface SingleAvatarProps {
   size: number;
   bg?: string;
 }
 
-export const Avatar = ({ source, size, bg }: AvatarProps) => {
+export const SingleAvatar = ({ source, size, bg }: SingleAvatarProps) => {
   const BoxShape = styled('div', {
     width: size,
     height: size,
@@ -21,7 +20,6 @@ export const Avatar = ({ source, size, bg }: AvatarProps) => {
 
   return (
     <BoxShape as="span">
-      <LazyImage src={source} size={size} />
       <svg height="0" viewBox="0 0 200 188" width="0">
         <defs>
           <clipPath
