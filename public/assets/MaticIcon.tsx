@@ -15,7 +15,7 @@ const Svg = styled('svg', {
 
 interface MaticIconProps extends SVGAttributes<HTMLOrSVGElement> {}
 
-export const MaticIcon = ({ props }: MaticIconProps) => {
+export const MaticIcon = (props: MaticIconProps) => {
   return (
     <Svg
       width="32"
