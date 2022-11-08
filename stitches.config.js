@@ -125,7 +125,7 @@ export const globalStyles = globalCss({
     boxSizing: 'border-box',
   },
   'body, input, textarea, select, button': {
-    font: "400 1rem 'Noto Sans', apple-system, sans-serif",
+    font: "400 1rem 'Open Sans', apple-system, sans-serif",
     fontSmooth: 'antialiased',
   },
   button: {
