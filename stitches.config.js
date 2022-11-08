@@ -31,7 +31,7 @@ export const { styled, css, createTheme, keyframes, getCssText, globalCss } =
         primaryRadialA,
       },
       fonts: {
-        sans: 'Noto sans, apple-system, sans-serif',
+        sans: 'Noto Sans, apple-system, sans-serif',
         mono: 'Fira Code, monospace',
       },
       fontSizes: {
