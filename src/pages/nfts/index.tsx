@@ -18,10 +18,10 @@ interface NftsProps {
   nfts: INftCollection[];
 }
 
-const Nfts = ({ nfts }: NftsProps) => {
+const Nfts = ({ nfts = [] }: NftsProps) => {
   const { address: walletAccount } = useAccount();
   const router = useRouter();
-
+  console.log(nfts);
   useEffect(() => {
     if (walletAccount) {
       router.push(`/nfts/${walletAccount}`);
@@ -69,8 +69,7 @@ export const getServerSideProps: GetServerSideProps = async () => {
   const { data: nfts } = await nftApi.get('/api/polygon');
   return {
     props: {
-      nfts: nfts || [],
+      nfts,
     },
-    revalidate: 60 * 60 * 24, // 24 hours
   };
 };

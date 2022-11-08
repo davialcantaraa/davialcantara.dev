@@ -13,7 +13,7 @@ export const ethereumApi = axios.create({
 });
 
 export const nftApi = axios.create({
-  baseURL: process.env.NFT_API_URL,
+  baseURL: process.env.NEXT_PUBLIC_NFT_API_URL,
 });
 
 export const openseaApi = axios.create({
