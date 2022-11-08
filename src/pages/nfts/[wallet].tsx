@@ -15,6 +15,7 @@ import { INftCollection } from '../../@types/nfts';
 import { purpleA } from '@radix-ui/colors';
 import * as TabsPrimitive from '@radix-ui/react-tabs';
 import { styled } from '../../../stitches.config';
+import Head from 'next/head';
 
 export const Tab = TabsPrimitive.Root;
 
@@ -54,59 +55,65 @@ const GuestNfts = ({ guestNfts, nfts }: GuestNftsProps) => {
   const connectedWallet = address;
 
   return (
-    <Box variant="page">
-      <VerticalBox as="header" css={{ gap: '$10' }}>
-        <VerticalBox>
-          <Text type="title">NFTs</Text>
-          <Text type="paragraph">NFTs playground</Text>
+    <>
+      <Head>
+        <title>Davi Alcântara | NFTs</title>
+      </Head>
+
+      <Box variant="page">
+        <VerticalBox as="header" css={{ gap: '$10' }}>
+          <VerticalBox>
+            <Text type="title">NFTs</Text>
+            <Text type="paragraph">NFTs playground</Text>
+          </VerticalBox>
+          <SearchNft />
+          <Box css={{ justifyContent: 'space-between', alignItems: 'center' }}>
+            <DefaultProfile />
+            <ProfileConnectButton />
+          </Box>
         </VerticalBox>
-        <SearchNft />
-        <Box css={{ justifyContent: 'space-between', alignItems: 'center' }}>
-          <DefaultProfile />
-          <ProfileConnectButton />
-        </Box>
-      </VerticalBox>
-      <Tab defaultValue="tab2">
-        <TabList>
-          <TabTrigger value="tab1">My NFTs</TabTrigger>
-          <TabTrigger value="tab2">
-            {guestWallet === connectedWallet ? 'Your NFTs' : 'Searched NFTs'}
-          </TabTrigger>
-        </TabList>
-        <TabContent value="tab1">
-          <VerticalBox>
-            {nfts.length ? (
-              <CardContainer type="multiple">
-                {nfts.map(collection => (
-                  <NftCollectionCard
-                    key={collection.openseaUrl}
-                    collection={collection}
-                  />
-                ))}
-              </CardContainer>
-            ) : (
-              <Nothing />
-            )}
-          </VerticalBox>
-        </TabContent>
-        <TabContent value="tab2">
-          <VerticalBox>
-            {guestNfts.length ? (
-              <CardContainer type="multiple">
-                {guestNfts.map(collection => (
-                  <NftCollectionCard
-                    key={collection.openseaUrl}
-                    collection={collection}
-                  />
-                ))}
-              </CardContainer>
-            ) : (
-              <Nothing />
-            )}
-          </VerticalBox>
-        </TabContent>
-      </Tab>
-    </Box>
+        <Tab defaultValue="tab2">
+          <TabList>
+            <TabTrigger value="tab1">My NFTs</TabTrigger>
+            <TabTrigger value="tab2">
+              {guestWallet === connectedWallet ? 'Your NFTs' : 'Searched NFTs'}
+            </TabTrigger>
+          </TabList>
+          <TabContent value="tab1">
+            <VerticalBox>
+              {nfts.length ? (
+                <CardContainer type="multiple">
+                  {nfts.map(collection => (
+                    <NftCollectionCard
+                      key={collection.openseaUrl}
+                      collection={collection}
+                    />
+                  ))}
+                </CardContainer>
+              ) : (
+                <Nothing />
+              )}
+            </VerticalBox>
+          </TabContent>
+          <TabContent value="tab2">
+            <VerticalBox>
+              {guestNfts.length ? (
+                <CardContainer type="multiple">
+                  {guestNfts.map(collection => (
+                    <NftCollectionCard
+                      key={collection.openseaUrl}
+                      collection={collection}
+                    />
+                  ))}
+                </CardContainer>
+              ) : (
+                <Nothing />
+              )}
+            </VerticalBox>
+          </TabContent>
+        </Tab>
+      </Box>
+    </>
   );
 };
 

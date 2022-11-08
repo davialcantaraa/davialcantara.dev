@@ -9,6 +9,7 @@ import { Text } from '../../styles/primitives/Text';
 import { VerticalBox } from '../../styles/primitives/VerticalBox';
 import { IRepo } from '../../@types/repositories';
 import { projects } from '../../utils/projects';
+import Head from 'next/head';
 
 interface ProjectProps {
   repos: IRepo[];
@@ -32,53 +33,59 @@ export const HoverElement = styled('div', {
 
 const Projects = ({ repos }: ProjectProps) => {
   return (
-    <Box variant="page">
-      <VerticalBox as="header">
-        <Text type="title">Projects</Text>
-        <Text type="paragraph">My latest projects in github</Text>
-      </VerticalBox>
-      <VerticalBox>
-        {repos.length ? (
-          <>
-            {repos.map(repo => (
-              <ProjectCard key={repo.name} repo={repo} />
-            ))}
-          </>
-        ) : (
-          <Nothing />
-        )}
-      </VerticalBox>
-      <Text
-        as="a"
-        type="title"
-        href="https://github.com/divinurised"
-        tabIndex={0}
-        css={{
-          position: 'relative',
-          transition: '$base',
-          display: 'flex',
-          justifyContent: 'center',
-          alignItems: 'center',
-          marginBottom: '$4',
-          outlineWidth: 0,
-          '&:focus-visible': {
-            [`& ${HoverElement}`]: {
-              outline: `2px solid ${purple.purple9}`,
+    <>
+      <Head>
+        <title>Davi Alcântara | Projects</title>
+      </Head>
+
+      <Box variant="page">
+        <VerticalBox as="header">
+          <Text type="title">Projects</Text>
+          <Text type="paragraph">My latest projects in github</Text>
+        </VerticalBox>
+        <VerticalBox>
+          {repos.length ? (
+            <>
+              {repos.map(repo => (
+                <ProjectCard key={repo.name} repo={repo} />
+              ))}
+            </>
+          ) : (
+            <Nothing />
+          )}
+        </VerticalBox>
+        <Text
+          as="a"
+          type="title"
+          href="https://github.com/divinurised"
+          tabIndex={0}
+          css={{
+            position: 'relative',
+            transition: '$base',
+            display: 'flex',
+            justifyContent: 'center',
+            alignItems: 'center',
+            marginBottom: '$4',
+            outlineWidth: 0,
+            '&:focus-visible': {
+              [`& ${HoverElement}`]: {
+                outline: `2px solid ${purple.purple9}`,
+              },
             },
-          },
-          '&:hover': {
-            [`& ${HoverElement}`]: {
-              opacity: 1,
-              transform: 'scaleX(1)',
-              visibility: 'visible',
+            '&:hover': {
+              [`& ${HoverElement}`]: {
+                opacity: 1,
+                transform: 'scaleX(1)',
+                visibility: 'visible',
+              },
             },
-          },
-        }}
-      >
-        See more...
-        <HoverElement />
-      </Text>
-    </Box>
+          }}
+        >
+          See more...
+          <HoverElement />
+        </Text>
+      </Box>
+    </>
   );
 };
 

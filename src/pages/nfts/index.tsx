@@ -13,6 +13,7 @@ import { Box } from '../../styles/primitives/Box';
 import { Text } from '../../styles/primitives/Text';
 import { VerticalBox } from '../../styles/primitives/VerticalBox';
 import { INftCollection } from '../../@types/nfts';
+import Head from 'next/head';
 
 interface NftsProps {
   nfts: INftCollection[];
@@ -32,6 +33,9 @@ const Nfts = ({ nfts = [] }: NftsProps) => {
 
   return (
     <>
+      <Head>
+        <title>Davi Alcântara | NFTs</title>
+      </Head>
       <Box variant="page">
         <VerticalBox as="header" css={{ gap: '$10' }}>
           <VerticalBox>

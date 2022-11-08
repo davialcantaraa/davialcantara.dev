@@ -7,6 +7,7 @@ import { Box } from '../../styles/primitives/Box';
 import { Text } from '../../styles/primitives/Text';
 import { VerticalBox } from '../../styles/primitives/VerticalBox';
 import { IPost } from '../../@types/posts';
+import Head from 'next/head';
 
 interface WritingProps {
   posts: IPost[];
@@ -14,22 +15,28 @@ interface WritingProps {
 
 const Writing = ({ posts }: WritingProps) => {
   return (
-    <Box variant="page">
-      <VerticalBox as="header">
-        <Text type="title">Writing</Text>
-      </VerticalBox>
-      <VerticalBox as="section">
-        {posts.length ? (
-          <>
-            {posts.map((post: any) => (
-              <WritingCard key={post.uid} post={post} />
-            ))}
-          </>
-        ) : (
-          <Nothing />
-        )}
-      </VerticalBox>
-    </Box>
+    <>
+      <Head>
+        <title>Davi Alcântara | Writing</title>
+      </Head>
+
+      <Box variant="page">
+        <VerticalBox as="header">
+          <Text type="title">Writing</Text>
+        </VerticalBox>
+        <VerticalBox as="section">
+          {posts.length ? (
+            <>
+              {posts.map((post: any) => (
+                <WritingCard key={post.uid} post={post} />
+              ))}
+            </>
+          ) : (
+            <Nothing />
+          )}
+        </VerticalBox>
+      </Box>
+    </>
   );
 };
 

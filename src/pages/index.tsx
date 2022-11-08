@@ -1,6 +1,7 @@
 import * as PrismicH from '@prismicio/helpers';
 import { purple } from '@radix-ui/colors';
 import type { GetServerSideProps, NextPage } from 'next';
+import Head from 'next/head';
 import { Lightning, PencilSimple } from 'phosphor-react';
 import { styled } from '../../stitches.config';
 import { Nothing } from '../components/Nothing';
@@ -30,109 +31,113 @@ export const HoverElement = styled('div', {
 });
 
 const Home: NextPage<any> = ({ posts, repos }) => {
-  console.log(repos);
   return (
-    <Box variant="page">
-      <VerticalBox>
-        <Text as="h1" type="title" css={{ cursor: 'help' }}>
-          Davi Alcântara
-        </Text>
-        <Text type="paragraph" css={{ marginTop: '$4' }}>
-          Hey! I'm Davi Alcântara, a Software Engineer and major Software
-          Engineering student. Based in Brazil.
-        </Text>
-        <Text type="paragraph" css={{ marginTop: '$4' }}>
-          Interested in design system, DX and Web3.
-        </Text>
-      </VerticalBox>
-      <VerticalBox as="main">
-        <Box css={{ display: 'block' }}>
+    <>
+      <Head>
+        <title>Davi Alcântara | Homepage</title>
+      </Head>
+      <Box variant="page">
+        <VerticalBox>
+          <Text as="h1" type="title" css={{ cursor: 'help' }}>
+            Davi Alcântara
+          </Text>
+          <Text type="paragraph" css={{ marginTop: '$4' }}>
+            Hey! I'm Davi Alcântara, a Software Engineer and major Software
+            Engineering student. Based in Brazil.
+          </Text>
+          <Text type="paragraph" css={{ marginTop: '$4' }}>
+            Interested in design system, DX and Web3.
+          </Text>
+        </VerticalBox>
+        <VerticalBox as="main">
+          <Box css={{ display: 'block' }}>
+            <Text
+              type="title"
+              css={{
+                marginBottom: '$10',
+                display: 'flex',
+                alignItems: 'center',
+                svg: {
+                  marginRight: '$2',
+                  size: '$6',
+                  color: '$primary',
+                },
+              }}
+            >
+              <PencilSimple />
+              Writing
+            </Text>
+            {posts.length ? (
+              <>
+                {posts.map((post: any) => (
+                  <WritingCard key={post.uid} post={post} />
+                ))}
+              </>
+            ) : (
+              <Nothing />
+            )}
+          </Box>
+          <Box css={{ display: 'block', marginTop: '$12' }}>
+            <Text
+              type="title"
+              css={{
+                marginBottom: '$10',
+                display: 'flex',
+                alignItems: 'center',
+                svg: {
+                  marginRight: '$2',
+                  size: '$6',
+                  color: '$primary',
+                },
+              }}
+            >
+              <Lightning />
+              Projects
+            </Text>
+            {repos.length ? (
+              <>
+                {repos.map((repo: any) => (
+                  <ProjectCard key={repo.name} repo={repo} />
+                ))}
+              </>
+            ) : (
+              <Nothing />
+            )}
+          </Box>
           <Text
+            as="a"
             type="title"
+            href="https://github.com/divinurised"
+            tabIndex={0}
             css={{
-              marginBottom: '$10',
+              position: 'relative',
+              transition: '$base',
               display: 'flex',
+              justifyContent: 'center',
               alignItems: 'center',
-              svg: {
-                marginRight: '$2',
-                size: '$6',
-                color: '$primary',
+              marginBottom: '$4',
+              marginTop: '$12',
+              outlineWidth: 0,
+              '&:focus-visible': {
+                [`& ${HoverElement}`]: {
+                  outline: `2px solid ${purple.purple9}`,
+                },
+              },
+              '&:hover': {
+                [`& ${HoverElement}`]: {
+                  opacity: 1,
+                  transform: 'scaleX(1)',
+                  visibility: 'visible',
+                },
               },
             }}
           >
-            <PencilSimple />
-            Writing
+            See more...
+            <HoverElement />
           </Text>
-          {posts.length ? (
-            <>
-              {posts.map((post: any) => (
-                <WritingCard key={post.uid} post={post} />
-              ))}
-            </>
-          ) : (
-            <Nothing />
-          )}
-        </Box>
-        <Box css={{ display: 'block', marginTop: '$12' }}>
-          <Text
-            type="title"
-            css={{
-              marginBottom: '$10',
-              display: 'flex',
-              alignItems: 'center',
-              svg: {
-                marginRight: '$2',
-                size: '$6',
-                color: '$primary',
-              },
-            }}
-          >
-            <Lightning />
-            Projects
-          </Text>
-          {repos.length ? (
-            <>
-              {repos.map((repo: any) => (
-                <ProjectCard key={repo.name} repo={repo} />
-              ))}
-            </>
-          ) : (
-            <Nothing />
-          )}
-        </Box>
-        <Text
-          as="a"
-          type="title"
-          href="https://github.com/divinurised"
-          tabIndex={0}
-          css={{
-            position: 'relative',
-            transition: '$base',
-            display: 'flex',
-            justifyContent: 'center',
-            alignItems: 'center',
-            marginBottom: '$4',
-            marginTop: '$12',
-            outlineWidth: 0,
-            '&:focus-visible': {
-              [`& ${HoverElement}`]: {
-                outline: `2px solid ${purple.purple9}`,
-              },
-            },
-            '&:hover': {
-              [`& ${HoverElement}`]: {
-                opacity: 1,
-                transform: 'scaleX(1)',
-                visibility: 'visible',
-              },
-            },
-          }}
-        >
-          See more...
-          <HoverElement />
-        </Text>
-      </VerticalBox>
-    </Box>
+        </VerticalBox>
+      </Box>
+    </>
   );
 };
 

@@ -8,6 +8,7 @@ import { Time } from '../../styles/primitives/Time';
 import { VerticalBox } from '../../styles/primitives/VerticalBox';
 import { IPost } from '../../@types/posts';
 import { styled } from '../../../stitches.config';
+import Head from 'next/head';
 
 interface PostProps {
   post: IPost;
@@ -22,49 +23,57 @@ const StyledCode = styled('pre');
 
 const Post = ({ post }: PostProps) => {
   return (
-    <Box
-      limit="md"
-      css={{
-        flexDirection: 'column',
-        justifyContent: 'flex-start',
-        padding: '$10',
-        gap: '$11',
-      }}
-    >
-      <VerticalBox as="header">
-        <Text type="largeTitle">{post.title}</Text>
-        <Text type="title" css={{ color: '$baseGray' }}>
-          {post.subtitle}
-        </Text>
-        <Time dateTime={prismicH.asDate(post.publicationDate)?.toISOString()}>
-          {prismicH.asDate(post.publicationDate)?.toLocaleDateString('en-US', {
-            month: 'long',
-            day: '2-digit',
-            year: 'numeric',
-          })}
-        </Time>
-      </VerticalBox>
-      <VerticalBox>
-        <PrismicRichText
-          field={post.content}
-          components={{
-            paragraph: ({ children }: any) => (
-              <Text type="paragraph" css={{ margin: '$4 0' }}>
-                {children}
-              </Text>
-            ),
-            image: ({ node: { url } }: any) => (
-              <>
-                <StyledImage src={url} />
-              </>
-            ),
-            preformatted: ({ children }: any) => (
-              <StyledCode css={{ margin: '$4 0' }}>{children}</StyledCode>
-            ),
-          }}
-        />
-      </VerticalBox>
-    </Box>
+    <>
+      <Head>
+        <title>Davi Alcântara | {post.title}</title>
+      </Head>
+
+      <Box
+        limit="md"
+        css={{
+          flexDirection: 'column',
+          justifyContent: 'flex-start',
+          padding: '$10',
+          gap: '$11',
+        }}
+      >
+        <VerticalBox as="header">
+          <Text type="largeTitle">{post.title}</Text>
+          <Text type="title" css={{ color: '$baseGray' }}>
+            {post.subtitle}
+          </Text>
+          <Time dateTime={prismicH.asDate(post.publicationDate)?.toISOString()}>
+            {prismicH
+              .asDate(post.publicationDate)
+              ?.toLocaleDateString('en-US', {
+                month: 'long',
+                day: '2-digit',
+                year: 'numeric',
+              })}
+          </Time>
+        </VerticalBox>
+        <VerticalBox>
+          <PrismicRichText
+            field={post.content}
+            components={{
+              paragraph: ({ children }: any) => (
+                <Text type="paragraph" css={{ margin: '$4 0' }}>
+                  {children}
+                </Text>
+              ),
+              image: ({ node: { url } }: any) => (
+                <>
+                  <StyledImage src={url} />
+                </>
+              ),
+              preformatted: ({ children }: any) => (
+                <StyledCode css={{ margin: '$4 0' }}>{children}</StyledCode>
+              ),
+            }}
+          />
+        </VerticalBox>
+      </Box>
+    </>
   );
 };
 
