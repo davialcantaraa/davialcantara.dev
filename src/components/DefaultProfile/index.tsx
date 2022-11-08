@@ -40,7 +40,11 @@ export const DefaultProfile = () => {
             }}
             arrowCSS={{ fill: 'transparent' }}
           >
-            <a href="/" target="_blank" rel="noreferrer">
+            <a
+              href="https://opensea.io/divinurised"
+              target="_blank"
+              rel="noreferrer"
+            >
               <ArrowSquareOut />
             </a>
           </Tooltip>
