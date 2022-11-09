@@ -107,7 +107,7 @@ const Home: NextPage<any> = ({ posts, repos }) => {
           <Text
             as="a"
             type="title"
-            href="https://github.com/divinurised"
+            href="https://github.com/davialc"
             tabIndex={0}
             css={{
               position: 'relative',

@@ -25,7 +25,7 @@ export const ProjectCard = ({ repo }: ProjectCardProps) => {
             <ToolbarGroup>
               <Tooltip content="Stars">
                 <ToolbarLink
-                  href={`https://github.com/divinurised/${repo.name}/stargazers`}
+                  href={`https://github.com/davialc/${repo.name}/stargazers`}
                   target="_blank"
                 >
                   <Star />
@@ -34,7 +34,7 @@ export const ProjectCard = ({ repo }: ProjectCardProps) => {
               </Tooltip>
               <Tooltip content="Forks">
                 <ToolbarLink
-                  href={`https://github.com/divinurised/${repo.name}/network/members`}
+                  href={`https://github.com/davialc/${repo.name}/network/members`}
                   target="_blank"
                 >
                   <GitBranch />
