@@ -82,3 +82,28 @@ export function getSingleNFTData(nft: Nft) {
     openseaUrl: ``,
   };
 }
+
+export function translateDateToPortuguese(dateString: string) {
+  const months = {
+    January: "janeiro",
+    February: "fevereiro",
+    March: "março",
+    April: "abril",
+    May: "maio",
+    June: "junho",
+    July: "julho",
+    August: "agosto",
+    September: "setembro",
+    October: "outubro",
+    November: "novembro",
+    December: "dezembro",
+  };
+
+  const date = new Date(dateString);
+  const month = date.toLocaleString("en-US", { month: "long" });
+  const day = date.getDate();
+  const year = date.getFullYear();
+
+  // @ts-ignore
+  return `${day} de ${months[month]} de ${year}`;
+}

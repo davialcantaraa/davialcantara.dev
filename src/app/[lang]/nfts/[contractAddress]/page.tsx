@@ -12,7 +12,6 @@ interface PageProps {
 }
 
 export default async function Page(props: PageProps) {
-  console.log(props)
   const contractAddress = props.params.contractAddress;
   const nftId = props.searchParams.id;
 
