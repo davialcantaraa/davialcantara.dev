@@ -1,14 +1,48 @@
 import { Breadcrumbs } from "@/components/breadcrumbs";
 import { Badge } from "@/components/ui/badge";
 import { Locale } from "@/config/i18n";
+import { siteConfig } from "@/config/site";
 import { getDictionary } from "@/lib/api/get-dictionaries";
 import { getSinglePost } from "@/lib/api/get-single-post";
-import { translateDateToPortuguese } from "@/lib/utils";
+import { absoluteUrl, translateDateToPortuguese } from "@/lib/utils";
+import { Metadata } from "next";
 
 interface PageProps {
   params: {
     slug: string;
     lang: Locale;
+  };
+}
+
+export async function generateMetadata({
+  params,
+}: PageProps): Promise<Metadata> {
+  const post = await getSinglePost(params.slug);
+
+  return {
+    title: post.metadata.title,
+    description: post.metadata.description,
+    openGraph: {
+      title: post.metadata.title,
+      description: post.metadata.description,
+      type: "article",
+      url: absoluteUrl(`${params.lang}/writing/${post.metadata.slug}`),
+      images: [
+        {
+          url: siteConfig.ogImage,
+          width: 1200,
+          height: 630,
+          alt: siteConfig.name,
+        },
+      ],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: post.metadata.title,
+      description: post.metadata.description,
+      images: [siteConfig.ogImage],
+      creator: "@davialcantaraa",
+    },
   };
 }
 

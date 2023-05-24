@@ -1,13 +1,53 @@
 import { Breadcrumbs } from "@/components/breadcrumbs";
+import { Locale } from "@/config/i18n";
+import { siteConfig } from "@/config/site";
 import { getSingleNft } from "@/lib/api/get-single.nft";
+import { absoluteUrl } from "@/lib/utils";
+import { Metadata } from "next";
 import Image from "next/image";
 
 interface PageProps {
   params: {
     contractAddress: string;
+    lang: Locale;
   };
   searchParams: {
     id: string;
+  };
+}
+
+export async function generateMetadata(props: PageProps): Promise<Metadata> {
+  const contractAddress = props.params.contractAddress;
+  const nftId = props.searchParams.id;
+
+  const requestedNft = await getSingleNft(contractAddress, nftId);
+
+  return {
+    title: requestedNft.title,
+    description: requestedNft.description,
+    openGraph: {
+      title: requestedNft.title,
+      description: requestedNft.description,
+      type: "article",
+      url: absoluteUrl(
+        `${props.params.lang}/nfts/${contractAddress}?id=${requestedNft.id}`
+      ),
+      images: [
+        {
+          url: siteConfig.ogImage,
+          width: 1200,
+          height: 630,
+          alt: siteConfig.name,
+        },
+      ],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: requestedNft.title,
+      description: requestedNft.description,
+      images: [siteConfig.ogImage],
+      creator: "@davialcantaraa",
+    },
   };
 }
 

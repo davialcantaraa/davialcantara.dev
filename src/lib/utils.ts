@@ -107,3 +107,7 @@ export function translateDateToPortuguese(dateString: string) {
   // @ts-ignore
   return `${day} de ${months[month]} de ${year}`;
 }
+
+export function absoluteUrl(path: string) {
+  return `${process.env.NEXT_PUBLIC_APP_URL}${path}`
+}
