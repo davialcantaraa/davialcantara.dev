@@ -1,0 +1,73 @@
+{
+  "index": {
+    "title": "Davi Alcântara",
+    "subtitle": {
+      "italic": "Engenheiro de Software",
+      "base": "morando no Brasil."
+    },
+    "navigation": [
+      {
+        "label": "Projetos",
+        "url": "/projects"
+      },
+      {
+        "label": "Artigos",
+        "url": "/writing"
+      },
+      {
+        "label": "NFTs",
+        "url": "/nfts"
+      },
+      {
+        "label": "Sobre",
+        "url": "/about"
+      }
+    ],
+    "grid": {
+      "projects": "Projetos",
+      "writing": "Artigos",
+      "nfts": "NFTs"
+    }
+  },
+  "projects": {
+    "title": "Projetos",
+    "subtitle": "Aqui estão os projetos que fiz.",
+    "breadcrumbs": {
+      "label": "Index",
+      "url": "/",
+      "subpath": {
+        "label": "Projetos",
+        "url": "/projects"
+      }
+    }
+  },
+  "writing": {
+    "title": "Artigos",
+    "breadcrumbs": {
+      "label": "Index",
+      "url": "/",
+      "subpath": {
+        "label": "Artigos",
+        "url": "/writing"
+      }
+    }
+  },
+  "nfts": {
+    "title": "NFTs",
+    "breadcrumbs": {
+      "label": "Index",
+      "url": "/",
+      "subpath": {
+        "label": "NFTs",
+        "url": "/nfts"
+      }
+    }
+  },
+  "about": {
+    "title": "Sobre",
+    "breadcrumbs": {
+      "label": "Index",
+      "url": "/"
+    }
+  }
+}
