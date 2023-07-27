@@ -22,6 +22,8 @@ export const Writing = async (props: Props) => {
     </div>
   ));
 
+  if (!posts.length) return null
+
   return (
     <div className="flex flex-col">
       <h3 className="mb-2 text-sm text-muted-foreground">{props.title}</h3>
