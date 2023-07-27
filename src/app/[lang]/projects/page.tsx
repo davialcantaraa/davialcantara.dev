@@ -12,7 +12,7 @@ export default async function Page(props: I18nPageProps) {
     <a
       href={item.github_url}
       key={item.github_url}
-      className="group flex justify-between border-b border-muted-foreground/50 py-2 transition-colors"
+      className="group flex flex-wrap gap-1 justify-between border-b border-muted-foreground/50 py-2 transition-colors"
       target="_blank"
     >
       <h3 className="font-medium group-hover:text-muted-foreground">
