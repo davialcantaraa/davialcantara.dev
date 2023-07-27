@@ -27,7 +27,7 @@ export const Projects = async (props: Props) => {
   ));
 
   return (
-    <div className="relative flex h-80 flex-col overflow-hidden">
+    <div className="relative flex flex-col overflow-hidden">
       <h3 className="mb-2 text-sm text-muted-foreground">{props.title}</h3>
       {reposMarkup}
     </div>
