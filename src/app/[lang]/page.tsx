@@ -1,4 +1,3 @@
-import { NFTs } from "@/components/NFTs";
 import { Projects } from "@/components/projects";
 import { Writing } from "@/components/writing";
 import { getDictionary } from "@/lib/api/get-dictionaries";
@@ -34,7 +33,7 @@ export default async function Home(props: I18nPageProps) {
         <div className="w-full">
           <ul className="flex space-x-3">{navigationMarkup}</ul>
         </div>
-        <div className="mt-12 grid grid-cols-3 gap-10">
+        <div className="mt-12 grid grid-cols-1 md:grid-cols-2 gap-10">
           {/* @ts-expect-error Server Component */}
           <Projects
             title={dictionary.index.grid.projects}
@@ -45,8 +44,6 @@ export default async function Home(props: I18nPageProps) {
             title={dictionary.index.grid.writing}
             lang={props.params.lang}
           />
-          {/* @ts-expect-error Server Component */}
-          <NFTs title={dictionary.index.grid.nfts} lang={props.params.lang} />
         </div>
       </article>
     </main>
